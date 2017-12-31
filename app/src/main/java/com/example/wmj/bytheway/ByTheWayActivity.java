@@ -52,7 +52,7 @@ public class ByTheWayActivity extends AppCompatActivity {
         showPasswordDialog();
 
     }
-
+    //登录界面设置
     private void showPasswordDialog() {
         LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
         loginDialogFragment.setOnDialogClick(new LoginDialogFragment.DialogClickListener() {
@@ -67,7 +67,6 @@ public class ByTheWayActivity extends AppCompatActivity {
         });
         loginDialogFragment.show(getFragmentManager(), "LoginDialogFragment");
     }
-
 
 
     private void initInstances() {

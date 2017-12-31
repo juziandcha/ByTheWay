@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -93,15 +94,13 @@ public class FragmentOrder extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Intent intent = OrderActivity.newIntent(getActivity(), mOrder.getUUID());
-            startActivity(intent);
+            showtaskDialog();
         }
         public void bindOrder(Order order){
             mOrder=order;
             mTitleTextView.setText(order.getTitle());
         }
     }
-
 
     //Adapter 内部类
     private class OrderAdapter extends RecyclerView.Adapter<OrderHolder>{
@@ -133,5 +132,29 @@ public class FragmentOrder extends Fragment {
 
             return new OrderHolder(view);
         }
+    }
+
+    //查看任务界面
+    private void showtaskDialog(){
+        Dialog_waitingtask dialog_waitingtask=new Dialog_waitingtask();
+
+        Bundle bundle=new Bundle();
+        bundle.putString("release_user","user1");
+        bundle.putString("title","task1");
+        bundle.putString("content","dsafadfaadfafafadfadfad adacdacaavdcafadfcadfaa");
+        bundle.putString("start_address","杭州东");
+        bundle.putString("end_address","浙大玉泉校区");
+        dialog_waitingtask.setArguments(bundle);
+
+        dialog_waitingtask.setOnDialogClick(new Dialog_waitingtask.DialogClickListener() {
+            @Override
+            public void onDialogClick(boolean ifreceive) {
+                if(ifreceive)
+                    Toast.makeText(getContext(),"yes",Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getContext(),"no",Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

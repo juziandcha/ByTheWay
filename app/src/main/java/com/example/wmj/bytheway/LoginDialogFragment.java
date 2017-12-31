@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 /**
  * Created by wmj on 2017/12/31.
