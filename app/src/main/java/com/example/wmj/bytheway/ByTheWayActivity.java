@@ -19,6 +19,8 @@ import android.view.WindowManager;
 import android.widget.TabHost;
 import android.widget.Toast;
 
+import com.example.wmj.bytheway.ConnSup.MinaThread;
+
 public class ByTheWayActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
@@ -35,6 +37,8 @@ public class ByTheWayActivity extends AppCompatActivity {
     private TabLayout.Tab tab_history;
     private TabLayout.Tab tab_chat;
 
+//    public static MinaThread mMinaThread=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,15 @@ public class ByTheWayActivity extends AppCompatActivity {
         }
 
         showPasswordDialog();
+
+//        new Thread(){
+//            @Override
+//            public void run(){
+//                mMinaThread=new MinaThread();
+//                mMinaThread.run();
+//            }
+//        }.start();
+
 
     }
     //登录界面设置

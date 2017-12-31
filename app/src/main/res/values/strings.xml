@@ -14,4 +14,5 @@
     <string name="Forget">忘记密码</string>
     <string name="Login">登录</string>
     <string name="LoginTitle">登录账户</string>
+    <string name="exit">退出</string>
 </resources>

@@ -21,11 +21,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="登陆账户"
+            android:text="@string/LoginTitle"
             android:textSize="32dp"
             android:layout_marginTop="72dp"
             android:layout_marginLeft="16dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:textColor="#fff"
             />
     </FrameLayout>
 
@@ -69,7 +69,7 @@
             android:layout_weight="1"
             android:background="#FFF"
             android:gravity="center"
-            android:text="退出"
+            android:text="@string/exit"
             android:textColor="#838383"
             android:textSize="16dp" />
 
@@ -86,7 +86,7 @@
             android:layout_weight="1"
             android:background="#FFF"
             android:gravity="center"
-            android:hint="登录"
+            android:hint="@string/Login"
             android:textColor="#5896FE"
             android:textSize="16dp" />
     </LinearLayout>
