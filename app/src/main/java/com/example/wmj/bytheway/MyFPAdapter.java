@@ -22,6 +22,8 @@ public class MyFPAdapter extends FragmentPagerAdapter {
             return new FragmentHistory();
         } else if (position == 2) {
             return new FragmentChat();
+        } else if(position==3){
+            return new FragmentFriends();
         }
         return new FragmentOrder();
     }
