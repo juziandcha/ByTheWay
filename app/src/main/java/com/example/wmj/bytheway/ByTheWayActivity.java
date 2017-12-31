@@ -36,6 +36,7 @@ public class ByTheWayActivity extends AppCompatActivity {
     private TabLayout.Tab tab_order;
     private TabLayout.Tab tab_history;
     private TabLayout.Tab tab_chat;
+    private TabLayout.Tab tab_friends;
 
 //    public static MinaThread mMinaThread=null;
 
@@ -164,11 +165,13 @@ public class ByTheWayActivity extends AppCompatActivity {
         tab_order = mTabLayout.getTabAt(0);
         tab_history = mTabLayout.getTabAt(1);
         tab_chat = mTabLayout.getTabAt(2);
+        tab_friends=mTabLayout.getTabAt(3);
 
         //给tab设置图标
         tab_order.setIcon(R.drawable.ic_bookmark_border_white_48dp);
         tab_history.setIcon(R.drawable.ic_history_white_48dp);
         tab_chat.setIcon(R.drawable.ic_chat_white_48dp);
+        tab_friends.setIcon(R.drawable.ic_account_circle_white_48dp);
     }
 
 

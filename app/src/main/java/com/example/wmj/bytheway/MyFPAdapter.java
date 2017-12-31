@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class MyFPAdapter extends FragmentPagerAdapter {
     //private String[] mTitles = new String[]{"ORDER", "HISTORY", "CHAT"};
-    private String[] mTitles = new String[]{"","",""};
+    private String[] mTitles = new String[]{"","","",""};
 
     public MyFPAdapter(FragmentManager fm) {
         super(fm);
