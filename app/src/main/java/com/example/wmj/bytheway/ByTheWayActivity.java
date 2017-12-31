@@ -68,6 +68,31 @@ public class ByTheWayActivity extends AppCompatActivity {
         loginDialogFragment.show(getFragmentManager(), "LoginDialogFragment");
     }
 
+    //查看任务界面
+    private void showtaskDialog(){
+        Dialog_waitingtask dialog_waitingtask=new Dialog_waitingtask();
+
+        Bundle bundle=new Bundle();
+        bundle.putString("release_user","user1");
+        bundle.putString("title","task1");
+        bundle.putString("content","dsafadfaadfafafadfadfad adacdacaavdcafadfcadfaa");
+        bundle.putString("start_address","杭州东");
+        bundle.putString("end_address","浙大玉泉校区");
+        dialog_waitingtask.setArguments(bundle);
+
+        dialog_waitingtask.setOnDialogClick(new Dialog_waitingtask.DialogClickListener() {
+            @Override
+            public void onDialogClick(boolean ifreceive) {
+                if(ifreceive)
+                    Toast.makeText(ByTheWayActivity.this,"yes",Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(ByTheWayActivity.this,"no",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        dialog_waitingtask.show(getFragmentManager(),"Dialog_waitingtask");
+
+    }
 
     private void initInstances() {
         mToolbar =findViewById(R.id.toolbar);

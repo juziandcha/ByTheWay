@@ -1,6 +1,7 @@
 package com.example.wmj.bytheway;
 
 import android.content.Intent;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -149,12 +150,15 @@ public class FragmentOrder extends Fragment {
         dialog_waitingtask.setOnDialogClick(new Dialog_waitingtask.DialogClickListener() {
             @Override
             public void onDialogClick(boolean ifreceive) {
+
                 if(ifreceive)
-                    Toast.makeText(getContext(),"yes",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"yes",Toast.LENGTH_SHORT).show();
                 else
                     Toast.makeText(getContext(),"no",Toast.LENGTH_SHORT).show();
+
             }
         });
 
+        dialog_waitingtask.show(getActivity().getFragmentManager(),"Dialog_waitingtask");
     }
 }

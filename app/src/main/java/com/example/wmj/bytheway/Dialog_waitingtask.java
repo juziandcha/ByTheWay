@@ -76,6 +76,7 @@ public class Dialog_waitingtask extends DialogFragment{
             @Override
             public void onClick(View v) {
                 listener.onDialogClick(true);
+                dismiss();
             }
         });
 
