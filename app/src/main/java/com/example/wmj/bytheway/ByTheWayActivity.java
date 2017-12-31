@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TabHost;
 import android.widget.Toast;
 
 public class ByTheWayActivity extends AppCompatActivity {
@@ -48,7 +49,26 @@ public class ByTheWayActivity extends AppCompatActivity {
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
 
+        showPasswordDialog();
+
     }
+
+    private void showPasswordDialog() {
+        LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
+        loginDialogFragment.setOnDialogClick(new LoginDialogFragment.DialogClickListener() {
+            @Override
+            public void onDialogClick(String Name, String Password) {
+                if(Name.equals("cancel")&&Password.equals("cancel"))
+                    finish();
+                else{
+                    Toast.makeText(ByTheWayActivity.this,Name+Password,Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        loginDialogFragment.show(getFragmentManager(), "LoginDialogFragment");
+    }
+
+
 
     private void initInstances() {
         mToolbar =findViewById(R.id.toolbar);
