@@ -2,21 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <EditText
-        android:id="@+id/user"
+    android:orientation="vertical"
+    >
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="用户" />
+        android:src="@drawable/a2"
+        android:scaleType="fitXY"
+        />
 
-    <EditText
-        android:id="@+id/key"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="密码" />
+        <EditText
+            android:id="@+id/user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="账户"
+            />
+
+        <EditText
+            android:id="@+id/key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="密码"
+            />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,7 +54,7 @@
             android:layout_weight="1"
             android:background="#FFF"
             android:gravity="center_horizontal"
-            android:text="登录"
+            android:hint="登录"
             android:textColor="#5896FE"
             android:textSize="32dp" />
     </LinearLayout>
