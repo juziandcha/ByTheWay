@@ -34,7 +34,9 @@ public class LoginDialogFragment extends DialogFragment{
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = LayoutInflater.from(getActivity());
+
         View view = inflater.inflate(R.layout.dialog_login, null);
+
         mNameEditText=(EditText)view.findViewById(R.id.user);
         mPasswordEditText=(EditText)view.findViewById(R.id.key);
         bcancel=(Button)view.findViewById(R.id.cancel);

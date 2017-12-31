@@ -8,4 +8,10 @@
     <string name="txt_navigation_view">NavigationView</string>
     <string name="txt_other">Other</string>
     <string name="title_activity_code_lab">CodeLabActivity</string>
+    <string name="InputPasswd">输入您的密码</string>
+    <string name="InputUsernm">输入您的用户名</string>
+    <string name="Register">注册账号</string>
+    <string name="Forget">忘记密码</string>
+    <string name="Login">登录</string>
+    <string name="LoginTitle">登录账户</string>
 </resources>

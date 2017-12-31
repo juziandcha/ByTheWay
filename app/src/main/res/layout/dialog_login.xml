@@ -4,48 +4,80 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <ImageView
+    <!--头部内容-->
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/a2"
-        android:scaleType="fitXY"
-        />
-
-        <EditText
-            android:id="@+id/user"
+        android:orientation="vertical"
+        >
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="账户"
+            android:src="@drawable/a2"
+            android:scaleType="fitXY"
             />
 
-        <EditText
-            android:id="@+id/key"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="密码"
+            android:text="登陆账户"
+            android:textSize="32dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginLeft="16dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             />
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="16dp">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="账户"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/key"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="密码"
+                />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
         <Button
             android:id="@+id/cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#FFF"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:text="退出"
             android:textColor="#838383"
-            android:textSize="32dp" />
+            android:textSize="16dp" />
 
         <View
             android:layout_width="1dp"
-            android:layout_height="40dp"
-            android:background="#BCBCBC" />
+            android:layout_height="match_parent"
+            android:background="#BCBCBC"
+            />
 
         <Button
             android:id="@+id/login"
@@ -53,11 +85,39 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#FFF"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:hint="登录"
             android:textColor="#5896FE"
-            android:textSize="32dp" />
+            android:textSize="16dp" />
     </LinearLayout>
 
-
+    <!--底部功能-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        >
+        <Button
+            android:id="@+id/btn_forget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textColor="#2999ce"
+            android:gravity="start"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:text="@string/Forget"/>
+        <Button android:id="@+id/btn_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:textColor="#2999ce"
+                android:gravity="end"
+                android:text="@string/Register"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
 </LinearLayout>
