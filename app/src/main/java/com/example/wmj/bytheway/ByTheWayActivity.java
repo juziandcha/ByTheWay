@@ -66,7 +66,7 @@ public class ByTheWayActivity extends AppCompatActivity {
 
 
     }
-    //登录界面设置
+    //登录界面设置界面
     private void showPasswordDialog() {
         LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
         loginDialogFragment.setOnDialogClick(new LoginDialogFragment.DialogClickListener() {
@@ -81,32 +81,21 @@ public class ByTheWayActivity extends AppCompatActivity {
         });
         loginDialogFragment.show(getFragmentManager(), "LoginDialogFragment");
     }
-
-    //查看任务界面
-    private void showtaskDialog(){
-        Dialog_waitingtask dialog_waitingtask=new Dialog_waitingtask();
-
-        Bundle bundle=new Bundle();
-        bundle.putString("release_user","user1");
-        bundle.putString("title","task1");
-        bundle.putString("content","dsafadfaadfafafadfadfad adacdacaavdcafadfcadfaa");
-        bundle.putString("start_address","杭州东");
-        bundle.putString("end_address","浙大玉泉校区");
-        dialog_waitingtask.setArguments(bundle);
-
-        dialog_waitingtask.setOnDialogClick(new Dialog_waitingtask.DialogClickListener() {
+    //新建任务列表设置界面
+    private void showcreateTaskDialog() {
+        Dialog_createtask dialog_createtask=new Dialog_createtask();
+        dialog_createtask.setOnDialogClick(new Dialog_createtask.DialogClickListener() {
             @Override
-            public void onDialogClick(boolean ifreceive) {
-                if(ifreceive)
-                    Toast.makeText(ByTheWayActivity.this,"yes",Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(ByTheWayActivity.this,"no",Toast.LENGTH_SHORT).show();
+            public void onDialogClick(boolean ifcreate, String titlename, String contents, String s_address, String e_address) {
+                if(ifcreate)
+                    Toast.makeText(ByTheWayActivity.this,titlename+contents+s_address+e_address,Toast.LENGTH_SHORT).show();
             }
         });
 
-        dialog_waitingtask.show(getFragmentManager(),"Dialog_waitingtask");
-
+        dialog_createtask.show(getFragmentManager(),"Dialog_createtask");
     }
+
+
 
     private void initInstances() {
         mToolbar =findViewById(R.id.toolbar);
@@ -140,13 +129,17 @@ public class ByTheWayActivity extends AppCompatActivity {
         mBtnFloat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showcreateTaskDialog();
+                /*
                 Snackbar.make(view, "HelloWorld", Snackbar.LENGTH_SHORT)
                         .setAction("Test",new View.OnClickListener(){
                             @Override
                             public void onClick(View view) {
-                                Toast.makeText(ByTheWayActivity.this, "Yes, It works!", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ByTheWayActivity.this, "Yes, It works!", Toast.LENGTH_SHORT).show();
+
                             }
                         }).show();
+                   */
             }
         });
 
