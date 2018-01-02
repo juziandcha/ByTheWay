@@ -107,15 +107,16 @@ public class ByTheWayActivity extends AppCompatActivity {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                int id=item.getItemId();
-                switch (id){
-                    case R.id.navItem1:
-                    case R.id.navItem2:
-                    case R.id.navItem3:
-                    case R.id.navItem4:
-                        Toast.makeText(ByTheWayActivity.this, "Test", Toast.LENGTH_SHORT).show();
-                        break;
-                }
+                //TODO: add click listener here
+//                int id=item.getItemId();
+//                switch (id){
+//                    case R.id.navItem1:
+//                    case R.id.navItem2:
+//                    case R.id.navItem3:
+//                    case R.id.navItem4:
+//                        Toast.makeText(ByTheWayActivity.this, "Test", Toast.LENGTH_SHORT).show();
+//                        break;
+//                }
                 return false;
             }
         });

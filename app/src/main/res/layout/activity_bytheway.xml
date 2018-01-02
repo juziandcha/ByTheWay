@@ -105,7 +105,7 @@
         app:headerLayout="@layout/my_header"
         app:itemIconTint="#333"
         app:itemTextColor="#333"
-        app:menu="@menu/navigation_drawer_items"
+        app:menu="@menu/navigation_items"
         />
 
 </android.support.v4.widget.DrawerLayout>

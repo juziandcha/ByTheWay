@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="账户">
+        <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/item_dync"
+                android:icon="@drawable/ic_games_black_48dp"
+                android:title="修改资料"
+                />
+            <item
+                android:id="@+id/item_explore"
+                android:icon="@drawable/ic_exit_to_app_black_48dp"
+                android:title="切换账户" />
+        </group>
+    </item>
+
+    <item android:title="其他">
+        <menu>
+            <item
+                android:id="@+id/subitem_02"
+                android:icon="@drawable/ic_help_black_48dp"
+                android:title="帮助" />
+            <item
+                android:id="@+id/subitem_03"
+                android:icon="@drawable/ic_info_black_48dp"
+                android:title="关于" />
+        </menu>
+    </item>
+</menu>
