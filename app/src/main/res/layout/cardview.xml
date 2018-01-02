@@ -1,170 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginRight="8dp"
     android:layout_marginLeft="8dp"
     android:layout_marginBottom="4dp"
-    android:layout_marginTop="2dp"
+    android:layout_marginTop="4dp"
     android:foreground="?attr/selectableItemBackground"
     >
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <!--头部部分-->
+        <!--头像和昵称-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:paddingStart="16dp"
             >
-            <!--头像和昵称-->
+            <com.pkmmte.view.CircularImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/boy"
+                android:scaleType="centerCrop"
+                app:border="true"
+                app:border_width="4dp"
+                app:shadow="true" />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="这是一个用户名"
+                android:textSize="16sp"
+                android:layout_marginLeft="16dp"
+                />
+        </LinearLayout>
+
+                <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#BCBCBC"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:alpha="0.1"
+                />
+
+        <!--标题和时间-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingLeft="24dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="3"
-                android:paddingLeft="16dp"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
                 >
                 <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_margin="4dp"
-                    android:layout_gravity="center"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/girl"/>
+                    android:src="@drawable/ic_subtitles_black_48dp"
+                    android:layout_gravity="center"
+                    android:alpha="0.5"
+                    />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/text_content"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="这是一个用户名"
-                    android:textAlignment="center"
-                    android:textSize="12sp"
-                    android:padding="2dp"
+                    android:text="这是一个标题"
+                    android:layout_gravity="center"
+                    android:paddingLeft="24dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="2dp"
+                >
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_access_time_black_48dp"
+                    android:layout_gravity="center"
+                    android:alpha="0.5"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="这是一个时间"
+                    android:layout_gravity="center"
+                    android:paddingLeft="24dp"
                     />
             </LinearLayout>
 
-            <!--标题和时间-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="2"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    >
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_subtitles_black_48dp"
-                        android:layout_gravity="center"
-                        android:alpha="0.5"
-                        />
-                    <TextView
-                        android:id="@+id/text_content"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="这是一个标题"
-                        android:layout_gravity="center"
-                        android:paddingLeft="16dp"
-                        />
-                </LinearLayout>
+    </LinearLayout>
+
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#BCBCBC"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:alpha="0.1"
                     />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    >
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_access_time_black_48dp"
-                        android:layout_gravity="center"
-                        android:alpha="0.5"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="这是一个时间"
-                        android:layout_gravity="center"
-                        android:paddingLeft="16dp"
-                        />
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
 
         <!--地址部分-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="2dp"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             >
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:layout_weight="1"
                 android:gravity="center"
+                android:paddingBottom="2dp"
                 >
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_location_on_black_48dp"
-                    android:alpha="0.5"
-                    android:layout_gravity="center"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="起始地"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="这是一个地址"
-                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
                     />
             </LinearLayout>
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="32dp"
-                    android:background="#BCBCBC"
-                    />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:layout_weight="1"
                 android:gravity="center"
+                android:paddingTop="2dp"
                 >
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:scaleType="centerCrop"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_location_on_black_48dp"
-                    android:alpha="0.5"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="目的地"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="这是一个地址"
-                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
                     />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
 
 </android.support.v7.widget.CardView>

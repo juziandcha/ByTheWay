@@ -23,7 +23,7 @@
                 android:text="创建你的订单"
                 android:textSize="24sp"
                 android:layout_marginTop="48dp"
-                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
                 android:textColor="#fff"
                 />
         </FrameLayout>
@@ -57,13 +57,6 @@
                     />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
-
-            <!--分割线-->
-            <!--<View-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:background="#BCBCBC"-->
-                <!--/>-->
 
         <!--输入内容-->
         <LinearLayout
@@ -119,7 +112,8 @@
                 android:layout_height="wrap_content"
                 android:text="点击选择出发地"
                 android:layout_gravity="center"
-                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 />
         </LinearLayout>
 
@@ -146,7 +140,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="点击选择目的地"
-                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:layout_gravity="center"
                 />
         </LinearLayout>
