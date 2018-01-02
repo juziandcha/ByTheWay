@@ -10,7 +10,7 @@
             android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/boy"/>
+            android:src="@drawable/girl"/>
         <TextView
             android:id="@+id/release_user"
             android:layout_width="wrap_content"

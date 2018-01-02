@@ -20,4 +20,9 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="MyButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">#92c9ff</item>
+        <item name="colorButtonNormal">#f14b2b</item>
+    </style>
+
 </resources>
