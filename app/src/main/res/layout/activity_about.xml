@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--References https://github.com/AndroidNewbies/Sanxing-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:background="@color/background_grey">
+    <ScrollView
+        android:id="@+id/about_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/about_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/starry_sky" />
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/about_root_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/about_image"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10sp"
+                        android:paddingBottom="10sp"
+                        style="@android:style/TextAppearance.Material.Headline"
+                        android:text="@string/app_name"/>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@string/app_version"/>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我们的征途是星辰大海"/>
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/feedback_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="2dp"
+                    app:cardPreventCornerOverlap="true" >
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="vertical">
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            style="@android:style/TextAppearance.Material.Title"
+                            android:text="@string/feedback"/>
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/feedback_info"/>
+                    </android.support.v7.widget.LinearLayoutCompat>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/author_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="2dp"
+                    app:cardPreventCornerOverlap="true"
+                    >
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="vertical">
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            style="@android:style/TextAppearance.Material.Title"
+                            android:text="@string/authors"/>
+
+                        <android.support.v7.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <android.support.v7.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingLeft="16dp"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                >
+                                <com.pkmmte.view.CircularImageView
+                                    android:layout_width="72dp"
+                                    android:layout_height="72dp"
+                                    android:src="@drawable/st4rlight"
+                                    android:scaleType="centerCrop"
+                                    app:border="true"
+                                    app:border_width="4dp"
+                                    app:shadow="true" />
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="st4rlight" />
+                            </android.support.v7.widget.LinearLayoutCompat>
+
+                            <android.support.v7.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:paddingRight="16dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                >
+                                <com.pkmmte.view.CircularImageView
+                                    android:layout_width="72dp"
+                                    android:layout_height="72dp"
+                                    android:src="@drawable/girl"
+                                    android:scaleType="centerCrop"
+                                    app:border="true"
+                                    app:border_width="4dp"
+                                    app:shadow="true" />
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="wmj"/>
+                            </android.support.v7.widget.LinearLayoutCompat>
+
+                        </android.support.v7.widget.LinearLayoutCompat>
+                    </android.support.v7.widget.LinearLayoutCompat>
+                </android.support.v7.widget.CardView>
+
+                <!--<android.support.v7.widget.CardView-->
+                    <!--android:id="@+id/credits_card"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="5dp"-->
+                    <!--android:layout_marginBottom="5dp"-->
+                    <!--android:clickable="true"-->
+                    <!--android:foreground="?android:attr/selectableItemBackground"-->
+                    <!--app:cardCornerRadius="2dp"-->
+                    <!--app:cardPreventCornerOverlap="true" >-->
+                    <!--<android.support.v7.widget.LinearLayoutCompat-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="16dp"-->
+                        <!--android:orientation="vertical">-->
+                        <!--<android.support.v7.widget.LinearLayoutCompat-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:orientation="horizontal">-->
+                            <!--<android.support.v7.widget.AppCompatTextView-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_gravity="start"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:layout_marginBottom="5dp"-->
+                                <!--style="@android:style/TextAppearance.Material.Title"-->
+                                <!--android:text="@string/opensource_license"/>-->
+                            <!--<android.support.v7.widget.AppCompatButton-->
+                                <!--android:id="@+id/about_expand_license"-->
+                                <!--android:layout_width="24dp"-->
+                                <!--android:layout_height="24dp"-->
+                                <!--android:layout_gravity="end|top"-->
+                                <!--style="?android:attr/borderlessButtonStyle"-->
+                                <!--android:background="@drawable/ic_expand"-->
+                                <!--android:padding="0dp"-->
+                                <!--android:drawablePadding="0dp"-->
+                                <!--android:drawableTint="@color/grey"-->
+                                <!--android:textColor="@color/grey" />-->
+                        <!--</android.support.v7.widget.LinearLayoutCompat>-->
+
+                        <!--<android.support.v7.widget.AppCompatTextView-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="@string/opensource_license_info"/>-->
+                        <!--<android.support.v7.widget.AppCompatTextView-->
+                            <!--android:id="@+id/long_long_text"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginTop="10dp"-->
+                            <!--android:visibility="gone" />-->
+                    <!--</android.support.v7.widget.LinearLayoutCompat>-->
+                <!--</android.support.v7.widget.CardView>-->
+            </android.support.v7.widget.LinearLayoutCompat>
+        </RelativeLayout>
+    </ScrollView>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/about_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        android:theme="@style/AppTheme" />
+    <!--android:background="@drawable/fading_transition"-->
+</RelativeLayout>

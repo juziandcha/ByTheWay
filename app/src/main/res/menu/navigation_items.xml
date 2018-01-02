@@ -4,12 +4,12 @@
     <item android:title="账户">
         <group android:checkableBehavior="single">
             <item
-                android:id="@+id/item_dync"
+                android:id="@+id/menu_change_profile"
                 android:icon="@drawable/ic_games_black_48dp"
                 android:title="修改资料"
                 />
             <item
-                android:id="@+id/item_explore"
+                android:id="@+id/menu_logout"
                 android:icon="@drawable/ic_exit_to_app_black_48dp"
                 android:title="切换账户" />
         </group>
@@ -18,11 +18,11 @@
     <item android:title="其他">
         <menu>
             <item
-                android:id="@+id/subitem_02"
+                android:id="@+id/menu_help"
                 android:icon="@drawable/ic_help_outline_black_48dp"
                 android:title="帮助" />
             <item
-                android:id="@+id/subitem_03"
+                android:id="@+id/menu_about"
                 android:icon="@drawable/ic_info_outline_black_48dp"
                 android:title="关于" />
         </menu>

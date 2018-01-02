@@ -108,15 +108,19 @@ public class ByTheWayActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 //TODO: add click listener here
-//                int id=item.getItemId();
-//                switch (id){
-//                    case R.id.navItem1:
+                int id=item.getItemId();
+                switch (id){
+                    case R.id.menu_about:
+                        Intent intent=new Intent(ByTheWayActivity.this,AboutActivity.class);
+                        startActivity(intent);
 //                    case R.id.navItem2:
 //                    case R.id.navItem3:
 //                    case R.id.navItem4:
 //                        Toast.makeText(ByTheWayActivity.this, "Test", Toast.LENGTH_SHORT).show();
 //                        break;
-//                }
+                      default:
+                          break;
+                }
                 return false;
             }
         });
