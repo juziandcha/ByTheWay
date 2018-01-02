@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:text="这是一个标题"
                     android:layout_gravity="center"
-                    android:paddingLeft="24dp"
+                    android:paddingLeft="26dp"
                     />
             </LinearLayout>
             <LinearLayout
@@ -105,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:text="这是一个时间"
                     android:layout_gravity="center"
-                    android:paddingLeft="24dp"
+                    android:paddingLeft="26dp"
                     />
             </LinearLayout>
 
