@@ -1,5 +1,6 @@
 package com.example.wmj.bytheway;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -87,8 +88,9 @@ public class ByTheWayActivity extends AppCompatActivity {
         dialog_createtask.setOnDialogClick(new Dialog_createtask.DialogClickListener() {
             @Override
             public void onDialogClick(boolean ifcreate, String titlename, String contents, String s_address, String e_address) {
-                if(ifcreate)
+                if(ifcreate){
                     Toast.makeText(ByTheWayActivity.this,titlename+contents+s_address+e_address,Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

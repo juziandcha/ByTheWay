@@ -3,6 +3,7 @@ package com.example.wmj.bytheway;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.view.LayoutInflater;
@@ -63,12 +64,18 @@ public class Dialog_waitingtask extends DialogFragment{
         start_address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //经纬度传输
+                Intent intent=new Intent(getActivity().getApplicationContext(),MapActivity.class);
+                startActivity(intent);
                 Toast.makeText(getActivity(),"star",Toast.LENGTH_SHORT).show();
             }
         });
         end_address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //经纬度传输
+                Intent intent=new Intent(getActivity().getApplicationContext(),MapActivity.class);
+                startActivity(intent);
                 Toast.makeText(getActivity(),"end",Toast.LENGTH_SHORT).show();
             }
         });
