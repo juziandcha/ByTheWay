@@ -100,9 +100,11 @@ public class ByTheWayActivity extends AppCompatActivity {
 
 
     private void initInstances() {
+        //设置使用ToolBar代替ActionBar
         mToolbar =findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
+        //设置导航栏
         mNavigationView=findViewById(R.id.navigation);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -111,6 +113,8 @@ public class ByTheWayActivity extends AppCompatActivity {
                 int id=item.getItemId();
                 switch (id){
                     case R.id.menu_about:
+                        //先隐藏导航栏，再调用另外一个界面
+                        mDrawerLayout.closeDrawers();
                         Intent intent=new Intent(ByTheWayActivity.this,AboutActivity.class);
                         startActivity(intent);
 //                    case R.id.navItem2:
