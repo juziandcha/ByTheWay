@@ -110,31 +110,32 @@ public class ByTheWayActivity extends AppCompatActivity {
         dialog_createtask.show(getFragmentManager(),"Dialog_createtask");
     }
 
-
-
+    //初始化各部分界面
     private void initInstances() {
         //设置使用ToolBar代替ActionBar
         mToolbar =findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
-        //设置导航栏
+        //设置导航栏中各个按钮的监听事件
         mNavigationView=findViewById(R.id.navigation);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                //TODO: add click listener here
+                //TODO: 注意，该部分添加时要隐藏导航栏
                 int id=item.getItemId();
                 switch (id){
                     case R.id.menu_about:
-                        //先隐藏导航栏，再调用另外一个界面
-                        mDrawerLayout.closeDrawers();
+                        mDrawerLayout.closeDrawers();//先隐藏导航栏，再调用另外一个界面
                         Intent intent=new Intent(ByTheWayActivity.this,AboutActivity.class);
                         startActivity(intent);
-//                    case R.id.navItem2:
-//                    case R.id.navItem3:
-//                    case R.id.navItem4:
-//                        Toast.makeText(ByTheWayActivity.this, "Test", Toast.LENGTH_SHORT).show();
-//                        break;
+                    case R.id.menu_profile:
+                    case R.id.menu_help:
+                    case R.id.menu_logout:
+                        //ToDO: 清空四个栏目的信息，并通知adapter发生了修改
+                        mDrawerLayout.closeDrawers();//隐藏导航栏
+                        userData=new UserData();//清空当前用户信息
+                        Toast.makeText(ByTheWayActivity.this, "退出登陆成功", Toast.LENGTH_SHORT).show();
+                        showPasswordDialog();
                       default:
                           break;
                 }
@@ -146,9 +147,11 @@ public class ByTheWayActivity extends AppCompatActivity {
         mDrawerToggle = new ActionBarDrawerToggle(ByTheWayActivity.this, mDrawerLayout, R.string.hello_world, R.string.hello_world);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
+        //显示左上角按钮
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //设置悬浮按钮的点击事件
         mBtnFloat =findViewById(R.id.btn_float);
         mBtnFloat.setOnClickListener(new View.OnClickListener() {
             @Override

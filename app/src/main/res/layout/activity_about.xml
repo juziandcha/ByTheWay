@@ -143,7 +143,7 @@
                                 <com.pkmmte.view.CircularImageView
                                     android:layout_width="72dp"
                                     android:layout_height="72dp"
-                                    android:src="@drawable/girl"
+                                    android:src="@drawable/wmj"
                                     android:scaleType="centerCrop"
                                     app:border="true"
                                     app:border_width="4dp"

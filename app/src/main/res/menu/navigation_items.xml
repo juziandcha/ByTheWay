@@ -4,7 +4,7 @@
     <item android:title="账户">
         <group android:checkableBehavior="single">
             <item
-                android:id="@+id/menu_change_profile"
+                android:id="@+id/menu_profile"
                 android:icon="@drawable/ic_games_black_48dp"
                 android:title="修改资料"
                 />

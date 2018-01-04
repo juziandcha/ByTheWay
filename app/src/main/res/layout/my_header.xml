@@ -30,12 +30,13 @@
             app:border_width="4dp"
             app:shadow="false" />
         <TextView
+            android:id="@+id/user_name"
             android:layout_toRightOf="@id/user_logo"
             android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
-            android:text="st4rlight"
+            android:text="zju"
             android:textSize="20sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
     </RelativeLayout>

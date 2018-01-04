@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wmj.bytheway.Activities.ByTheWayActivity;
@@ -98,6 +99,13 @@ public class LoginDialogFragment extends DialogFragment{
                             JSONArray jsonArray=new JSONArray(ByTheWayActivity.dataResult);
                             JSONObject jsonResult=jsonArray.getJSONObject(0);
                             Toast.makeText(getActivity(), jsonResult.toString(), Toast.LENGTH_SHORT).show();
+
+                            //显示用户名字
+                            TextView user_name=getActivity().findViewById(R.id.user_name);
+                            if(jsonResult.getString("Name").equals(""))
+                                user_name.setText(jsonResult.getString("ID"));
+                            else
+                                user_name.setText(jsonResult.getString("Name"));
                             ByTheWayActivity.userData.UserData(jsonResult.getString("ID"),jsonResult.getString("Name"),jsonResult.getString("Gender"),jsonResult.getString("PhoneNumber"));
 
                             dismiss();
