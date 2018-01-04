@@ -30,13 +30,13 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="bDauvFDB82dMulZ31KKNB2KHYxxdWi8M"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".ByTheWayActivity"
+            android:name=".Activities.ByTheWayActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -53,8 +53,8 @@
             //LBS SDK中的服务
         </service>
 
-        <activity android:name=".MapActivity"/>
-        <activity android:name=".AboutActivity">
+        <activity android:name=".Activities.MapActivity"/>
+        <activity android:name=".Activities.AboutActivity">
         </activity>
     </application>
 

@@ -1,8 +1,6 @@
 package com.example.wmj.bytheway.ConnSup;
 
-import android.widget.Toast;
-
-import com.example.wmj.bytheway.ByTheWayActivity;
+import com.example.wmj.bytheway.Activities.ByTheWayActivity;
 
 import org.apache.mina.core.service.IoHandler;
 import org.apache.mina.core.session.IdleStatus;

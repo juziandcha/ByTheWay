@@ -1,7 +1,5 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.Fragments;
 
-import android.content.Intent;
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -14,6 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.wmj.bytheway.InfoClass.AllOrders;
+import com.example.wmj.bytheway.Dialogs.Dialog_waitingtask;
+import com.example.wmj.bytheway.Util.EndLessOnScrollListener;
+import com.example.wmj.bytheway.InfoClass.Order;
+import com.example.wmj.bytheway.R;
 
 import java.util.List;
 

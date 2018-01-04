@@ -1,38 +1,35 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.Dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.VibrationEffect;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wmj.bytheway.Activities.MapActivity;
+import com.example.wmj.bytheway.R;
+
 /**
- * Created by wmj on 2017/12/31.
+ * Created by wmj on 2018/1/2.
  */
 
-public class Dialog_waitingtask extends DialogFragment{
-    private ImageView image;
-    private TextView release_user;
+public class Dialog_historytask extends DialogFragment{
     private TextView title,content;
+    private TextView release_user,receive_user;
     private TextView start_address,end_address;
-    private Button receive;
+    private TextView task_status;
 
-    private Dialog_waitingtask.DialogClickListener listener;
+    private Dialog_historytask.DialogClickListener listener;
 
     public interface DialogClickListener{
         void onDialogClick(boolean ifreceive);
     }
 
-    public void setOnDialogClick(Dialog_waitingtask.DialogClickListener listener){
+    public void setOnDialogClick(Dialog_historytask.DialogClickListener listener){
         this.listener=listener;
     }
 
@@ -44,27 +41,32 @@ public class Dialog_waitingtask extends DialogFragment{
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = LayoutInflater.from(getActivity());
-        View view = inflater.inflate(R.layout.dialog_waitingtask, null);
-        image=(ImageView)view.findViewById(R.id.image);
-        release_user=(TextView)view.findViewById(R.id.release_user);
-        title=(TextView)view.findViewById(R.id.title);
-        content=(TextView)view.findViewById(R.id.content);
-        start_address=(TextView) view.findViewById(R.id.start_address);
-        end_address=(TextView)view.findViewById(R.id.end_address);
-        receive=(Button)view.findViewById(R.id.receive);
+        View view = inflater.inflate(R.layout.dialog_histotytask, null);
+        title=(TextView)view.findViewById(R.id.title_history);
+        content=(TextView)view.findViewById(R.id.content_history);
+        release_user=(TextView)view.findViewById(R.id.release_user_history);
+        receive_user=(TextView)view.findViewById(R.id.receive_user_history);
+        start_address=(TextView)view.findViewById(R.id.saddress_history);
+        end_address=(TextView)view.findViewById(R.id.eaddress_history);
+        task_status=(TextView)view.findViewById(R.id.status_history);
 
-        release_user.setText(bundle.getString("release_user"));
+        //获取预置信息
+        /*
         title.setText(bundle.getString("title"));
         content.setText(bundle.getString("content"));
+        release_user.setText(bundle.getString("release_user"));
+        receive_user.setText(bundle.getString("receive_user"));
         start_address.setText(bundle.getString("start_address"));
         end_address.setText(bundle.getString("end_address"));
+        task_status.setText(bundle.getString("task_status"));
+        */
         //设为其它状态不可选中
         //setCancelable(false);
 
         start_address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //经纬度传输
+                //还需加入经纬度信息
                 Intent intent=new Intent(getActivity().getApplicationContext(),MapActivity.class);
                 startActivity(intent);
                 Toast.makeText(getActivity(),"star",Toast.LENGTH_SHORT).show();
@@ -73,17 +75,10 @@ public class Dialog_waitingtask extends DialogFragment{
         end_address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //经纬度传输
+                //还需加入经纬度信息
                 Intent intent=new Intent(getActivity().getApplicationContext(),MapActivity.class);
                 startActivity(intent);
                 Toast.makeText(getActivity(),"end",Toast.LENGTH_SHORT).show();
-            }
-        });
-        receive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onDialogClick(true);
-                dismiss();
             }
         });
 
@@ -91,4 +86,5 @@ public class Dialog_waitingtask extends DialogFragment{
 
         return builder.create();
     }
+
 }

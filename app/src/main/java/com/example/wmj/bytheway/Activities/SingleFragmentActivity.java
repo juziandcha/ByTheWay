@@ -1,9 +1,11 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.Activities;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+
+import com.example.wmj.bytheway.R;
 
 /**
  * Created by st4rlight on 2017/12/28.

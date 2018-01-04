@@ -1,4 +1,4 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.Activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -17,10 +16,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.example.wmj.bytheway.ConnSup.MinaThread;
+import com.example.wmj.bytheway.Dialogs.Dialog_createtask;
+import com.example.wmj.bytheway.InfoClass.UserData;
+import com.example.wmj.bytheway.Fragments.LoginDialogFragment;
+import com.example.wmj.bytheway.Util.MyFPAdapter;
+import com.example.wmj.bytheway.R;
 
 import org.apache.mina.core.session.IoSession;
 
@@ -63,8 +66,8 @@ public class ByTheWayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bytheway);
 
-        initInstances();
-        setTabLayout();
+        initInstances();//初始化各部分界面
+        setTabLayout();//初始化四个栏目
 
         //设置透明化
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -163,7 +166,6 @@ public class ByTheWayActivity extends AppCompatActivity {
                    */
             }
         });
-
 
     }
     private void setTabLayout(){

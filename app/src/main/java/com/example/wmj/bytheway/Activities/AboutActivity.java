@@ -1,4 +1,4 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.Activities;
 
 import android.content.Intent;
 import android.os.Build;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.example.wmj.bytheway.R;
 
 public class AboutActivity extends AppCompatActivity {
 

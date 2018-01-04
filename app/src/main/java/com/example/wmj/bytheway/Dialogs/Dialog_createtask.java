@@ -1,4 +1,4 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.Dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.wmj.bytheway.Activities.MapActivity;
+import com.example.wmj.bytheway.R;
 
 /**
  * Created by wmj on 2017/12/31.

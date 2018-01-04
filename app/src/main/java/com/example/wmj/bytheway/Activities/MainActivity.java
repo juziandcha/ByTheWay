@@ -1,4 +1,4 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.core.RouteLine;
 import com.baidu.mapapi.search.route.RoutePlanSearch;
+import com.example.wmj.bytheway.R;
 
 public class MainActivity extends AppCompatActivity {
     private TextView location;

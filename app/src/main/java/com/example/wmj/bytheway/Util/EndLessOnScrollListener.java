@@ -1,4 +1,4 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.Util;
 
 /**
  * Created by st4rlight on 2017/12/29.

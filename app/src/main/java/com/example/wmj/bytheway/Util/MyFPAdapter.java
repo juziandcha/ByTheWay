@@ -1,8 +1,13 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.Util;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.wmj.bytheway.Fragments.FragmentChat;
+import com.example.wmj.bytheway.Fragments.FragmentFriends;
+import com.example.wmj.bytheway.Fragments.FragmentHistory;
+import com.example.wmj.bytheway.Fragments.FragmentOrder;
 
 /**
  * Created by st4rlight on 2017/12/27.

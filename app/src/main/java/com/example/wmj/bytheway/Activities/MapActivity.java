@@ -1,4 +1,4 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +24,7 @@ import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.baidu.mapapi.search.route.RoutePlanSearch;
 import com.baidu.mapapi.utils.DistanceUtil;
+import com.example.wmj.bytheway.R;
 
 public class MapActivity extends AppCompatActivity {
     private MapView mapView=null;

@@ -1,4 +1,4 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.InfoClass;
 
 import android.content.Context;
 

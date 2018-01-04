@@ -1,4 +1,4 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.InfoClass;
 
 /**
  * Created by wmj on 2018/1/4.
@@ -10,7 +10,7 @@ public class UserData {
     private String Gender=null;
     private String PhoneNumber=null;
 
-    UserData(){};
+    public UserData(){};
 
     public void UserData(String id,String name,String gender,String phoneNumber){
         this.ID=id;

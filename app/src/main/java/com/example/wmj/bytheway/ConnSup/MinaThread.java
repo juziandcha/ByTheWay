@@ -1,6 +1,6 @@
 package com.example.wmj.bytheway.ConnSup;
 
-import com.example.wmj.bytheway.ByTheWayActivity;
+import com.example.wmj.bytheway.Activities.ByTheWayActivity;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
@@ -12,7 +12,6 @@ import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
 import org.apache.mina.filter.executor.ExecutorFilter;
 import org.apache.mina.transport.socket.nio.NioSocketConnector;
-import org.json.JSONObject;
 
 //http://blog.csdn.net/u012348345/article/details/50655388
 
@@ -73,7 +72,7 @@ public class MinaThread implements Runnable {
             } catch (Exception ex) {
                 try {
                     System.out.println("客户端连接异常");
-                    Thread.sleep(7000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException iex) {
                     iex.printStackTrace();
                 }

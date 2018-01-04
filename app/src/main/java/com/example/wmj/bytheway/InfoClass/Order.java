@@ -1,4 +1,4 @@
-package com.example.wmj.bytheway;
+package com.example.wmj.bytheway.InfoClass;
 
 import java.util.Date;
 import java.util.UUID;
