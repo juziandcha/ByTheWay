@@ -1,5 +1,9 @@
 package com.example.wmj.bytheway.ConnSup;
 
+import android.widget.Toast;
+
+import com.example.wmj.bytheway.ByTheWayActivity;
+
 import org.apache.mina.core.service.IoHandler;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
@@ -18,7 +22,7 @@ public class MinaClientHandler implements IoHandler {
 
     public void messageReceived(IoSession session, Object obj) throws Exception {
         String msg = (String) obj;
-        System.out.println("client messageReceived: " + msg);
+        ByTheWayActivity.dataResult=msg;
     }
 
     public void messageSent(IoSession session, Object obj) throws Exception {

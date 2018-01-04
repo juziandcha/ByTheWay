@@ -1,5 +1,7 @@
 package com.example.wmj.bytheway.ConnSup;
 
+import com.example.wmj.bytheway.ByTheWayActivity;
+
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 
@@ -19,7 +21,6 @@ public class MinaThread implements Runnable {
     private static int port = 10086;
     private static String hostAddress = "47.100.124.11";
 
-    public IoSession session = null;
     private IoConnector connector = null;
 
     @Override
@@ -47,11 +48,11 @@ public class MinaThread implements Runnable {
                         Thread.sleep(5000);//等待5秒后开始重连
                         ConnectFuture future = connector.connect();
                         future.awaitUninterruptibly();// 等待连接创建完成
-                        session = future.getSession();// 获得session
-                        if (session != null && session.isConnected()) {
+                        ByTheWayActivity.session = future.getSession();// 获得session
+                        if (ByTheWayActivity.session != null && ByTheWayActivity.session.isConnected()) {
                             System.out.println("断线重连["
-                                    + ((InetSocketAddress) session.getRemoteAddress()).getAddress().getHostAddress()
-                                    + ":" + ((InetSocketAddress) session.getRemoteAddress()).getPort() + "]成功");
+                                    + ((InetSocketAddress) ByTheWayActivity.session.getRemoteAddress()).getAddress().getHostAddress()
+                                    + ":" + ((InetSocketAddress) ByTheWayActivity.session.getRemoteAddress()).getPort() + "]成功");
                             break;
                         } else {
                             System.out.println("断线重连失败---->5秒后再次重连.....");
@@ -67,19 +68,8 @@ public class MinaThread implements Runnable {
             try {
                 ConnectFuture future = connector.connect();
                 future.awaitUninterruptibly();//等待连接创建完成
-                session = future.getSession();//获得Session
-//                if (session != null && session.isConnected()) {
-//                    String md5= MD5.getMD5("123");
-//                    String sql="select * from User where ID=? and Password=? ;";
-//
-//                    JSONObject keyValue=new JSONObject();
-//                    keyValue.put("ID","123");//顺序放置要填充?部分的值，防止sql注入
-//                    keyValue.put("Password",md5);
-//
-//                    JsonContent JsonObj= new JsonContent(sql,"query",keyValue);
-
-                    break;
-//                }
+                ByTheWayActivity.session = future.getSession();//获得Session
+                break;
             } catch (Exception ex) {
                 try {
                     System.out.println("客户端连接异常");
@@ -89,8 +79,8 @@ public class MinaThread implements Runnable {
                 }
             }
             finally {
-                if (session != null && session.isConnected()) {
-                    session.getCloseFuture().awaitUninterruptibly();
+                if (ByTheWayActivity.session != null && ByTheWayActivity.session.isConnected()) {
+                    ByTheWayActivity.session.getCloseFuture().awaitUninterruptibly();
                     System.out.println("断开连接");
                 }
             }

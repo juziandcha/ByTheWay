@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.example.wmj.bytheway.ConnSup.MinaThread;
 
+import org.apache.mina.core.session.IoSession;
+
 public class ByTheWayActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
@@ -39,7 +41,10 @@ public class ByTheWayActivity extends AppCompatActivity {
     private TabLayout.Tab tab_chat;
     private TabLayout.Tab tab_friends;
 
-//    public static MinaThread mMinaThread=null;
+    //全局session，用于网络连接
+    public static IoSession session=null;
+    public static String dataResult=null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +62,8 @@ public class ByTheWayActivity extends AppCompatActivity {
 
         showPasswordDialog();
 
-//        new Thread(){
-//            @Override
-//            public void run(){
-//                mMinaThread=new MinaThread();
-//                mMinaThread.run();
-//            }
-//        }.start();
+
+        new Thread(new MinaThread()).start();
 
 
     }
