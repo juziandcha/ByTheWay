@@ -82,8 +82,9 @@ public class LoginDialogFragment extends DialogFragment{
 //                        //Todo: 可能要判断网络连接
 //                        //if (session != null && session.isConnected())
                         ByTheWayActivity.session.write(JsonObj.getJsonStr());
+                        ByTheWayActivity.lock.lock();
+                        ByTheWayActivity.condition.await();
 
-                        Toast.makeText(getActivity(), ByTheWayActivity.dataResult, Toast.LENGTH_SHORT).show();
                         String result=ByTheWayActivity.dataResult;
 
                         JSONArray tempJsArr=new JSONArray(result);
@@ -100,6 +101,9 @@ public class LoginDialogFragment extends DialogFragment{
                         Toast.makeText(getActivity(), "出错", Toast.LENGTH_SHORT).show();
                         ex.printStackTrace();
                     }
+
+                    ByTheWayActivity.lock.unlock();
+
                 }
 
 //                listener.onDialogClick(mNameEditText.getText().toString(),mPasswordEditText.getText().toString());

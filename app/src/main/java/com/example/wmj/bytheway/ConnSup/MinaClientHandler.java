@@ -21,8 +21,11 @@ public class MinaClientHandler implements IoHandler {
     }
 
     public void messageReceived(IoSession session, Object obj) throws Exception {
+        ByTheWayActivity.lock.lock();
         String msg = (String) obj;
         ByTheWayActivity.dataResult=msg;
+        ByTheWayActivity.condition.signalAll();
+        ByTheWayActivity.lock.unlock();
     }
 
     public void messageSent(IoSession session, Object obj) throws Exception {

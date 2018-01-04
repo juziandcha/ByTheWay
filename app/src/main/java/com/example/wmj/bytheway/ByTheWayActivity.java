@@ -24,6 +24,10 @@ import com.example.wmj.bytheway.ConnSup.MinaThread;
 
 import org.apache.mina.core.session.IoSession;
 
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class ByTheWayActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
@@ -44,6 +48,11 @@ public class ByTheWayActivity extends AppCompatActivity {
     //全局session，用于网络连接
     public static IoSession session=null;
     public static String dataResult=null;
+
+    //condition
+    public static Lock lock=new ReentrantLock();
+    public static Condition condition=lock.newCondition();
+
 
 
     @Override
