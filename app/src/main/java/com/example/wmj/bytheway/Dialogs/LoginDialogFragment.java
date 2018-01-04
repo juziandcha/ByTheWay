@@ -1,4 +1,4 @@
-package com.example.wmj.bytheway.Fragments;
+package com.example.wmj.bytheway.Dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.wmj.bytheway.Activities.ByTheWayActivity;
 import com.example.wmj.bytheway.ConnSup.MD5;
+import com.example.wmj.bytheway.Dialog_createuser;
 import com.example.wmj.bytheway.R;
 import com.example.wmj.bytheway.Util.GetData;
 
@@ -25,7 +26,7 @@ import org.json.JSONObject;
 public class LoginDialogFragment extends DialogFragment{
     private EditText mNameEditText;
     private EditText mPasswordEditText;
-    private Button bcancel,blogin;
+    private Button bcancel,blogin,bregister,bfoget;
 
     private DialogClickListener listener;
 
@@ -48,6 +49,8 @@ public class LoginDialogFragment extends DialogFragment{
         mPasswordEditText=(EditText)view.findViewById(R.id.key);
         bcancel=(Button)view.findViewById(R.id.cancel);
         blogin=(Button)view.findViewById(R.id.login);
+        bfoget=(Button)view.findViewById(R.id.btn_forget);
+        bregister=(Button)view.findViewById(R.id.btn_register);
 
         //设为其它状态不可选中
         setCancelable(false);
@@ -111,6 +114,15 @@ public class LoginDialogFragment extends DialogFragment{
                 }
 
 //                listener.onDialogClick(mNameEditText.getText().toString(),mPasswordEditText.getText().toString());
+            }
+        });
+
+        bregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog_createuser dialog_createuser=new Dialog_createuser();
+                dialog_createuser.show(getFragmentManager(),"dialog_createuser");
+
             }
         });
 

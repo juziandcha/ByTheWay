@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.example.wmj.bytheway.ConnSup.MinaThread;
 import com.example.wmj.bytheway.Dialogs.Dialog_createtask;
 import com.example.wmj.bytheway.InfoClass.UserData;
-import com.example.wmj.bytheway.Fragments.LoginDialogFragment;
+import com.example.wmj.bytheway.Dialogs.LoginDialogFragment;
 import com.example.wmj.bytheway.Util.MyFPAdapter;
 import com.example.wmj.bytheway.R;
 
@@ -76,7 +76,7 @@ public class ByTheWayActivity extends AppCompatActivity {
         }
 
         showPasswordDialog();
-        
+
         new Thread(new MinaThread()).start();
 
     }
