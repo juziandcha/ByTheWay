@@ -49,9 +49,12 @@ public class ByTheWayActivity extends AppCompatActivity {
     public static IoSession session=null;
     public static String dataResult=null;
 
-    //condition
+    //condition,用于加锁
     public static Lock lock=new ReentrantLock();
     public static Condition condition=lock.newCondition();
+
+    //用于存储用户信息
+    public static UserData userData=new UserData();
 
 
 
@@ -70,10 +73,8 @@ public class ByTheWayActivity extends AppCompatActivity {
         }
 
         showPasswordDialog();
-
-
+        
         new Thread(new MinaThread()).start();
-
 
     }
     //登录界面设置界面
