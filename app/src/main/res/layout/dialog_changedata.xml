@@ -40,30 +40,10 @@
                 android:id="@+id/new_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="修改名字"
+                android:hint="名字"
                 />
         </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/new_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="修改密码"
-                />
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/new_gender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="修改性别"
-                />
-        </android.support.design.widget.TextInputLayout>
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -71,9 +51,18 @@
                 android:id="@+id/new_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="修改电话号码"
+                android:hint="电话号码"
                 />
         </android.support.design.widget.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/spinArr"
+            android:padding="16dp"
+            />
+
     </LinearLayout>
 
     <LinearLayout

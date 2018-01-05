@@ -1,5 +1,6 @@
 package com.example.wmj.bytheway.Activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -10,6 +11,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -138,16 +140,13 @@ public class ByTheWayActivity extends AppCompatActivity {
                             startActivity(intent);
                             break;
                     case R.id.menu_profile:
-                        Dialog_changedata dialog_changedata=new Dialog_changedata();
-                        dialog_changedata.show(getFragmentManager(),"Dialog_changedata");
-                        break;
+                            Dialog_changedata dialog_changedata=new Dialog_changedata();
+                            dialog_changedata.show(getFragmentManager(),"Dialog_changedata");
+                            break;
                     case R.id.menu_help:
                     case R.id.menu_logout:
                             //ToDO: 清空四个栏目的信息，并通知adapter发生了修改
-                            mDrawerLayout.closeDrawers();//隐藏导航栏
-                            userData=new UserData();//清空当前用户信息
-                            Toast.makeText(ByTheWayActivity.this, "退出登陆成功", Toast.LENGTH_SHORT).show();
-                            showPasswordDialog();
+                            confirmDialog();
                             break;
                       default:
                           break;
@@ -204,6 +203,36 @@ public class ByTheWayActivity extends AppCompatActivity {
         tab_history.setIcon(R.drawable.ic_history_white_48dp);
         tab_chat.setIcon(R.drawable.ic_chat_white_48dp);
         tab_friends.setIcon(R.drawable.ic_account_circle_white_48dp);
+    }
+
+    //确认注销Dialog
+    private void confirmDialog(){
+        //初始化AlertDialog构建器对象
+        AlertDialog.Builder builder=new AlertDialog.Builder(ByTheWayActivity.this);
+        //设置dialog信息
+        builder.setMessage("确定注销吗?");
+        //设置dialog标题
+        builder.setTitle("提示");
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //如果用户单击确认退出,则对话框消失,程序关闭
+                dialog.dismiss();
+                mDrawerLayout.closeDrawers();//隐藏导航栏
+                userData=new UserData();//清空当前用户信息
+                Toast.makeText(ByTheWayActivity.this, "退出登陆成功", Toast.LENGTH_SHORT).show();
+                showPasswordDialog();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //单击取消,对话框消失
+                dialog.dismiss();
+            }
+        });
+        //创建对话框并且显示
+        builder.create().show();
     }
 
 

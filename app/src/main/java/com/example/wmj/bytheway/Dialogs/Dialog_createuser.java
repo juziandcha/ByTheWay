@@ -127,7 +127,6 @@ public class Dialog_createuser extends DialogFragment{
                                 }
                             } else {
                                 Toast.makeText(getActivity(), "注册成功", Toast.LENGTH_SHORT).show();
-                                ByTheWayActivity.getByTheWayActivity().showPasswordDialog();
                                 dismiss();
                             }
                         }

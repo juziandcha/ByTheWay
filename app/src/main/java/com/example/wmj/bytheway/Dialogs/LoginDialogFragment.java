@@ -97,7 +97,6 @@ public class LoginDialogFragment extends DialogFragment{
                             GetData.runGetData(sql,"query",keyValue);
                             JSONArray jsonArray=new JSONArray(ByTheWayActivity.dataResult);
                             JSONObject jsonResult=jsonArray.getJSONObject(0);
-                            Toast.makeText(getActivity(), jsonResult.toString(), Toast.LENGTH_SHORT).show();
 
                             //显示用户名字
                             TextView user_name=getActivity().findViewById(R.id.user_name);
