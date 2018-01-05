@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class GetData {
     public static void runGetData(String sql, String type, JSONObject keyValue){
         try {
-            JsonContent JsonCont = new JsonContent(sql, "query", keyValue);
+            JsonContent JsonCont = new JsonContent(sql, type, keyValue);
             ByTheWayActivity.session.write(JsonCont.getJsonStr());
             ByTheWayActivity.lock.lock();
             ByTheWayActivity.condition.await();

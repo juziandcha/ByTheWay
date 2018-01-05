@@ -59,7 +59,14 @@ public class ByTheWayActivity extends AppCompatActivity {
     //用于存储用户信息
     public static UserData userData=new UserData();
 
-
+    //用于在其他地方调用主Activity
+    private static ByTheWayActivity byTheWayActivity;
+    public ByTheWayActivity(){
+        byTheWayActivity=this;
+    }
+    public static ByTheWayActivity getByTheWayActivity() {
+        return byTheWayActivity;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +88,7 @@ public class ByTheWayActivity extends AppCompatActivity {
 
     }
     //登录界面设置界面
-    private void showPasswordDialog() {
+    public void showPasswordDialog() {
         LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
         loginDialogFragment.setOnDialogClick(new LoginDialogFragment.DialogClickListener() {
             @Override
@@ -125,17 +132,19 @@ public class ByTheWayActivity extends AppCompatActivity {
                 int id=item.getItemId();
                 switch (id){
                     case R.id.menu_about:
-                        mDrawerLayout.closeDrawers();//先隐藏导航栏，再调用另外一个界面
-                        Intent intent=new Intent(ByTheWayActivity.this,AboutActivity.class);
-                        startActivity(intent);
+                            mDrawerLayout.closeDrawers();//先隐藏导航栏，再调用另外一个界面
+                            Intent intent=new Intent(ByTheWayActivity.this, AboutActivity.class);
+                            startActivity(intent);
+                            break;
                     case R.id.menu_profile:
                     case R.id.menu_help:
                     case R.id.menu_logout:
-                        //ToDO: 清空四个栏目的信息，并通知adapter发生了修改
-                        mDrawerLayout.closeDrawers();//隐藏导航栏
-                        userData=new UserData();//清空当前用户信息
-                        Toast.makeText(ByTheWayActivity.this, "退出登陆成功", Toast.LENGTH_SHORT).show();
-                        showPasswordDialog();
+                            //ToDO: 清空四个栏目的信息，并通知adapter发生了修改
+                            mDrawerLayout.closeDrawers();//隐藏导航栏
+                            userData=new UserData();//清空当前用户信息
+                            Toast.makeText(ByTheWayActivity.this, "退出登陆成功", Toast.LENGTH_SHORT).show();
+                            showPasswordDialog();
+                            break;
                       default:
                           break;
                 }

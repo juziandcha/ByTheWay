@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.wmj.bytheway.Activities.ByTheWayActivity;
 import com.example.wmj.bytheway.ConnSup.MD5;
-import com.example.wmj.bytheway.Dialog_createuser;
 import com.example.wmj.bytheway.R;
 import com.example.wmj.bytheway.Util.GetData;
 
@@ -78,8 +77,8 @@ public class LoginDialogFragment extends DialogFragment{
                         String md5 = MD5.getMD5(passwd);
                         String sql = "select * from User where ID=? and Password=?";
                         JSONObject keyValue = new JSONObject();
-                        keyValue.put("ID", name);//顺序放置要填充?部分的值，防止sql注入
-                        keyValue.put("Password", md5);
+                        keyValue.put("1", name);//顺序放置要填充?部分的值，防止sql注入
+                        keyValue.put("2", md5);
 
                         //Todo: 可能要判断网络连接
                         //if (session != null && session.isConnected())
@@ -92,7 +91,7 @@ public class LoginDialogFragment extends DialogFragment{
                             //获取用户个人信息并赋值
                             sql="select * from Person where ID=?";//获取用户信息的sql
                             keyValue=new JSONObject();//清空keyValue
-                            keyValue.put("ID",name);
+                            keyValue.put("1",name);
 
                             //获取用户信息并赋值
                             GetData.runGetData(sql,"query",keyValue);
