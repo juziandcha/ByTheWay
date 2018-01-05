@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.wmj.bytheway.ConnSup.MinaThread;
+import com.example.wmj.bytheway.Dialogs.Dialog_changedata;
 import com.example.wmj.bytheway.Dialogs.Dialog_createtask;
 import com.example.wmj.bytheway.InfoClass.UserData;
 import com.example.wmj.bytheway.Dialogs.LoginDialogFragment;
@@ -137,6 +138,9 @@ public class ByTheWayActivity extends AppCompatActivity {
                             startActivity(intent);
                             break;
                     case R.id.menu_profile:
+                        Dialog_changedata dialog_changedata=new Dialog_changedata();
+                        dialog_changedata.show(getFragmentManager(),"Dialog_changedata");
+                        break;
                     case R.id.menu_help:
                     case R.id.menu_logout:
                             //ToDO: 清空四个栏目的信息，并通知adapter发生了修改
