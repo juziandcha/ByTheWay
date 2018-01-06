@@ -23,7 +23,7 @@ import org.json.JSONObject;
  * Created by wmj on 2017/12/31.
  */
 
-public class LoginDialogFragment extends DialogFragment{
+public class Dialog_login extends DialogFragment{
     private EditText mNameEditText;
     private EditText mPasswordEditText;
     private Button bcancel,blogin,bregister,bfoget;

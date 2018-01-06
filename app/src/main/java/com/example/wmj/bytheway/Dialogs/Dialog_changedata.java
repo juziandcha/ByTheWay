@@ -79,6 +79,7 @@ public class Dialog_changedata extends DialogFragment {
             JSONArray jsonArray = new JSONArray(ByTheWayActivity.dataResult);
             JSONObject jsonProfile= jsonArray.getJSONObject(0);
 
+            //如果之前有资料，那么就显示在对应的编辑框内
             if(!(jsonProfile.getString("Name").equals("")))
                 edit_name.setText(jsonProfile.getString("Name"));
             if(!(jsonProfile.getString("PhoneNumber").equals("")))

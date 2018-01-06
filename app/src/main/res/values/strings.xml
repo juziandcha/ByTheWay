@@ -20,4 +20,5 @@
     <string name="feedback_info">通过Github Issue向我们反馈</string>
     <string name="authors">开发者</string>
     <string name="change_data">修改资料</string>
+    <string name="no_data_available">附件没有合适的订单</string>
 </resources>

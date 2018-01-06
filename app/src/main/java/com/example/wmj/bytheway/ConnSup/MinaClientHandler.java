@@ -21,7 +21,9 @@ public class MinaClientHandler implements IoHandler {
     public void messageReceived(IoSession session, Object obj) throws Exception {
         ByTheWayActivity.lock.lock();
         String msg = (String) obj;
-        ByTheWayActivity.dataResult=msg;
+
+        ByTheWayActivity.dataResult=msg;//ByTheWayActivity中的dataResult时一个全局变量，用于保存数据库查询结果
+        //由于该变量有多线程访问，因而需要加锁进行同步和互斥处理
         ByTheWayActivity.condition.signalAll();
         ByTheWayActivity.lock.unlock();
     }

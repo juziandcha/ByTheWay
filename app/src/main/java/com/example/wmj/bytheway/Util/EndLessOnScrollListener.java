@@ -61,4 +61,8 @@ public abstract class EndLessOnScrollListener extends  RecyclerView.OnScrollList
      * 提供一个抽象方法，在Activity中监听到这个EndLessOnScrollListener
      * 并且实现这个方法
      * */
-    public abstract void onLoadMore(int currentPage);}
+    public abstract void onLoadMore(int currentPage);
+
+    public abstract void onReachEnd(int currentPage);
+
+}

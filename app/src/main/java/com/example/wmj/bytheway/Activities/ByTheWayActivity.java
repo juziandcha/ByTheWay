@@ -23,8 +23,8 @@ import android.widget.Toast;
 import com.example.wmj.bytheway.ConnSup.MinaThread;
 import com.example.wmj.bytheway.Dialogs.Dialog_changedata;
 import com.example.wmj.bytheway.Dialogs.Dialog_createtask;
+import com.example.wmj.bytheway.Dialogs.Dialog_login;
 import com.example.wmj.bytheway.InfoClass.UserData;
-import com.example.wmj.bytheway.Dialogs.LoginDialogFragment;
 import com.example.wmj.bytheway.Util.MyFPAdapter;
 import com.example.wmj.bytheway.R;
 
@@ -92,8 +92,8 @@ public class ByTheWayActivity extends AppCompatActivity {
     }
     //登录界面设置界面
     public void showPasswordDialog() {
-        LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
-        loginDialogFragment.setOnDialogClick(new LoginDialogFragment.DialogClickListener() {
+        Dialog_login dialogLogin = new Dialog_login();
+        dialogLogin.setOnDialogClick(new Dialog_login.DialogClickListener() {
             @Override
             public void onDialogClick(String Name, String Password) {
                 if(Name.equals("cancel")&&Password.equals("cancel"))
@@ -103,7 +103,7 @@ public class ByTheWayActivity extends AppCompatActivity {
                 }
             }
         });
-        loginDialogFragment.show(getFragmentManager(), "LoginDialogFragment");
+        dialogLogin.show(getFragmentManager(), "Dialog_login");
     }
     //新建任务列表设置界面
     private void showcreateTaskDialog() {
