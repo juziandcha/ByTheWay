@@ -66,7 +66,6 @@ public class Dialog_createtask extends DialogFragment{
                 if(text_start){
                     start_address.setText(Addr);
                     start=new Address(Addr,lat,lng);
-                    
                 }
                 else {
                     end_address.setText(Addr);
@@ -123,14 +122,17 @@ public class Dialog_createtask extends DialogFragment{
                 }else{
                     //将数据存储进数据库
                     try{
-                        String sql = "INSERT INTO Task VALUES(null, ? , ? , null , null , ? , ? , ? , ? ,'waiting')";
+                        String sql = "INSERT INTO Task VALUES(null, ?, ? , ? , null , null , ? , ? , ? , ? , ? , ? ,'waiting')";
                         JSONObject keyValue = new JSONObject();
-                        keyValue.put("1", myTitle);//顺序放置要填充?部分的值，防止sql注入
-                        keyValue.put("2", myContent);
-                        keyValue.put("3",start.getLongitude());
-                        keyValue.put("4",start.getLatitude());
-                        keyValue.put("5",target.getLongitude());
-                        keyValue.put("6",target.getLatitude());
+                        keyValue.put("1",ByTheWayActivity.userData.getID());
+                        keyValue.put("2", myTitle);//顺序放置要填充?部分的值，防止sql注入
+                        keyValue.put("3", myContent);
+                        keyValue.put("4",start.getLongitude());
+                        keyValue.put("5",start.getLatitude());
+                        keyValue.put("6",start.getAddress());
+                        keyValue.put("7",target.getLongitude());
+                        keyValue.put("8",target.getLatitude());
+                        keyValue.put("9",target.getAddress());
 
                         //Todo: 可能要判断网络连接
                         GetData.runGetData(sql,"update",keyValue);
