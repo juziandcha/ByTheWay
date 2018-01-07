@@ -43,8 +43,10 @@ public class Dialog_createtask extends DialogFragment{
             case RESULT_OK:
                 Bundle b=data.getExtras();
                 String Addr=b.getString("address");
+                String lat=b.getString("Latitude");
+                String lng=b.getString("Longitude");
                 if(text_start){
-                    start_address.setText(Addr);
+                    start_address.setText(Addr+lat+"\n"+lng);
                 }
                 else {
                     end_address.setText(Addr);

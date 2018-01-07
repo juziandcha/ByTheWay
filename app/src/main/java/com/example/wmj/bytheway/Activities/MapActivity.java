@@ -33,6 +33,7 @@ public class MapActivity extends AppCompatActivity {
     private GeoCoder mSearch = null; // 搜索模块，用于正向或反向编码
     private LatLng latLng;
     public LocationClient mLocationClient;
+    public String lat,lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,9 @@ public class MapActivity extends AppCompatActivity {
                 Intent intent=new Intent(MapActivity.this,ByTheWayActivity.class);
                 Bundle bundle=new Bundle();
                 bundle.putString("address",result.getAddress());
+                bundle.putString("Latitude",lat);
+                bundle.putString("Longitude",lng);
+
                 intent.putExtras(bundle);
                 setResult(RESULT_OK,intent);
             }
@@ -85,7 +89,10 @@ public class MapActivity extends AppCompatActivity {
                 OverlayOptions options=new MarkerOptions().position(point).icon(bitmapDescriptor);
                 baiduMap.addOverlay(options);
 
+
                 //调用反向编码接口，触发listener，结果在listener函数中体现
+                lat=String.valueOf(point.latitude);
+                lng=String.valueOf(point.longitude);
                 ReverseGeoCodeOption reverseGeoCodeOption = new ReverseGeoCodeOption();
                 reverseGeoCodeOption.location(point);
                 mSearch.reverseGeoCode(reverseGeoCodeOption);
