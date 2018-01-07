@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.wmj.bytheway.Activities.MapActivity;
+import com.example.wmj.bytheway.Activities.OnlyMapActivity;
 import com.example.wmj.bytheway.R;
 
 /**
@@ -65,7 +65,7 @@ public class Dialog_waitingtask extends DialogFragment{
             @Override
             public void onClick(View v) {
                 //经纬度传输
-                Intent intent=new Intent(getActivity().getApplicationContext(),MapActivity.class);
+                Intent intent=new Intent(getActivity().getApplicationContext(),OnlyMapActivity.class);
                 startActivity(intent);
                 Toast.makeText(getActivity(),"star",Toast.LENGTH_SHORT).show();
             }
@@ -74,7 +74,7 @@ public class Dialog_waitingtask extends DialogFragment{
             @Override
             public void onClick(View v) {
                 //经纬度传输
-                Intent intent=new Intent(getActivity().getApplicationContext(),MapActivity.class);
+                Intent intent=new Intent(getActivity().getApplicationContext(),OnlyMapActivity.class);
                 startActivity(intent);
                 Toast.makeText(getActivity(),"end",Toast.LENGTH_SHORT).show();
             }
