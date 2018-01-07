@@ -1,6 +1,7 @@
 package com.example.wmj.bytheway.InfoClass;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.example.wmj.bytheway.Activities.ByTheWayActivity;
 import com.example.wmj.bytheway.Util.GetData;
@@ -47,9 +48,19 @@ public class AllOrders {
                 tempOrder.setOrderID(jsonObject.getString("TaskID"));
                 tempOrder.setTitle(jsonObject.getString("Title"));
                 tempOrder.setContent(jsonObject.getString("Content"));
-                tempOrder.setReleaseTime(new Date(jsonObject.getString("StartTime")));
-                //修改usedata
-                tempOrder.setReleaseUser(new UserData(jsonObject.getString("UserID"),));
+                tempOrder.setReleaseTime(jsonObject.getString("StartTime"));
+
+                    //修改usedata
+                    sql="select * from Person where ID=?";
+                    keyValue=new JSONObject();
+                    keyValue.put("1",jsonObject.getString("UserID"));
+                    GetData.runGetData(sql, "query", keyValue);
+                    JSONArray jsonUserArr = new JSONArray(ByTheWayActivity.dataResult);
+                    JSONObject jsonUser=jsonUserArr.getJSONObject(0);
+                        UserData tempUser=new UserData();
+                        tempUser.UserData(jsonUser.getString("ID"),jsonUser.getString("Name"),jsonUser.getString("Gender"),jsonUser.getString("PhoneNumber"));
+                    tempOrder.setReleaseUser(tempUser);
+
                 tempOrder.setStartAddress(new Address(jsonObject.getString("StartAddr"), jsonObject.getString("StartAdrLot"), jsonObject.getString("StartAdrLat")));
                 tempOrder.setTargetAddress(new Address(jsonObject.getString("EndAddr"), jsonObject.getString("EndAdrLot"), jsonObject.getString("EndAdrLat")));
                 tempOrder.setStatus(jsonObject.getString("Status"));

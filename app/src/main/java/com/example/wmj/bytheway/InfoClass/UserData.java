@@ -5,10 +5,10 @@ package com.example.wmj.bytheway.InfoClass;
  */
 
 public class UserData {
-    private String ID=null;
-    private String Name=null;
-    private String Gender=null;
-    private String PhoneNumber=null;
+    private String ID="";
+    private String Name="";
+    private String Gender="";
+    private String PhoneNumber="";
 
     public UserData(){};
 

@@ -140,6 +140,7 @@ public class Dialog_createtask extends DialogFragment{
 
                         if(jsonObject.getString("succeed").equals("true")) {
                             Toast.makeText(getActivity(), "创建订单成功", Toast.LENGTH_SHORT).show();
+                            //ToDo: 刷新当前附近订单列表
                             listener.onDialogClick(true, title.getText().toString(), content.getText().toString(), start_address.getText().toString(), end_address.getText().toString());
                             dismiss();
                         }else{

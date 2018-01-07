@@ -15,9 +15,9 @@ public class Order {
     private String mTitle;//订单标题
     private String mContent;//订单内容
 
-    private Date mReleaseTime;//发布时间
-    private Date mFinishTime;//完成时间
-    private Date mReceiveTime;//接收时间
+    private String mReleaseTime;//发布时间
+    private String mFinishTime;//完成时间
+    private String mReceiveTime;//接收时间
 
     private UserData mReleaseUser;//发布用户
     private UserData mReceiveUser;//接收用户
@@ -47,15 +47,15 @@ public class Order {
         return mContent;
     }
 
-    public Date getReleaseTime() {
+    public String getReleaseTime() {
         return mReleaseTime;
     }
 
-    public Date getFinishTime() {
+    public String getFinishTime() {
         return mFinishTime;
     }
 
-    public Date getReceiveTime() {
+    public String getReceiveTime() {
         return mReceiveTime;
     }
 
@@ -95,15 +95,15 @@ public class Order {
         mContent = content;
     }
 
-    public void setReleaseTime(Date releaseTime) {
+    public void setReleaseTime(String releaseTime) {
         mReleaseTime = releaseTime;
     }
 
-    public void setFinishTime(Date finishTime) {
+    public void setFinishTime(String finishTime) {
         mFinishTime = finishTime;
     }
 
-    public void setReceiveTime(Date receiveTime) {
+    public void setReceiveTime(String receiveTime) {
         mReceiveTime = receiveTime;
     }
 

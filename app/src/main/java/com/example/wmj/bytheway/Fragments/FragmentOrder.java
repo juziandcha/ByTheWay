@@ -166,12 +166,12 @@ public class FragmentOrder extends Fragment {
         int preSize=mAdapter.getItemCount();
 
         //ToDo: 加载更多数据
-        for (int i =0; i < 10; i++){
-            Order order=new Order();
-            order.setTitle("上拉加载 #"+i);
-            mAdapter.addData(order);
-            mAdapter.notifyDataSetChanged();
-        }
+//        for (int i =0; i < 10; i++){
+//            Order order=new Order();
+//            order.setTitle("上拉加载 #"+i);
+//            mAdapter.addData(order);
+//            mAdapter.notifyDataSetChanged();
+//        }
 
         mLoadTV.setVisibility(View.GONE);
 
