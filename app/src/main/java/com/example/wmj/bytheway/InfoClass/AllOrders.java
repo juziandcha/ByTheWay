@@ -29,6 +29,7 @@ public class AllOrders {
     private AllOrders(Context context){
         mOrders=new ArrayList<>();
         //Todo: get add orders from database
+        //
         //获取用户个人信息并赋值
 //        String sql="select * from Person where ID=?";//获取筛选的sql
 //        JSONObject keyValue=new JSONObject();//
