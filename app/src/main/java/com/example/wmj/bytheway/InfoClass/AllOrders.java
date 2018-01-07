@@ -29,7 +29,7 @@ public class AllOrders {
         return sAllOrders;
     }
 
-    private AllOrders(Context context){
+    public AllOrders(Context context){
         mOrders=new ArrayList<>();
         try {
             //Todo: get add orders from database

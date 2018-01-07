@@ -26,6 +26,7 @@ public class MinaThread implements Runnable {
     public void run(){
         System.out.println("Client Start Connection");
         connector=new NioSocketConnector();
+
         //设置连接超时时间
         connector.setConnectTimeoutMillis(10000);
 

@@ -199,11 +199,13 @@ public class FragmentOrder extends Fragment {
                 mSwipeRefreshLayout.setRefreshing(false);
 
                 //Todo: 重新从服务器获取数据，获取语句写在Allorders类里
-                AllOrders allOrders = AllOrders.get(getActivity());
+                AllOrders allOrders =new AllOrders(getActivity());
                 List<Order> orders= allOrders.getOrders();
 
                 mAdapter = new OrderAdapter(orders);
                 mRecyclerView.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
+                Toast.makeText(getActivity(), "刷新成功", Toast.LENGTH_SHORT).show();
             }
         }, 2000);
     }
