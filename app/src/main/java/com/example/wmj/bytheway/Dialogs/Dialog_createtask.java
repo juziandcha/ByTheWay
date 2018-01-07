@@ -1,34 +1,45 @@
 package com.example.wmj.bytheway.Dialogs;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.JsonReader;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.mapapi.SDKInitializer;
+import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.search.core.SearchResult;
+import com.baidu.mapapi.search.geocode.GeoCodeResult;
+import com.baidu.mapapi.search.geocode.GeoCoder;
+import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.example.wmj.bytheway.Activities.ByTheWayActivity;
 import com.example.wmj.bytheway.Activities.MapActivity;
-import com.example.wmj.bytheway.ConnSup.MD5;
 import com.example.wmj.bytheway.InfoClass.Address;
 import com.example.wmj.bytheway.R;
 import com.example.wmj.bytheway.Util.GetData;
-import com.example.wmj.bytheway.Util.GetTime;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
-import static android.content.Context.KEYGUARD_SERVICE;
 
 /**
  * Created by wmj on 2017/12/31.
@@ -43,6 +54,13 @@ public class Dialog_createtask extends DialogFragment{
 
     private Address start=new Address("","","");
     private Address target=new Address("","","");
+
+    //定位模块
+    public LocationClient mLocationClient;
+    private GeoCoder mSearch = null;
+    private String locationlat="30.274007";//如果不选择定位，默认初始位置在浙大玉泉校区32舍
+    private String locationlot="120.129971";
+    private String locationaddr="点击选择目的地";
 
     private Dialog_createtask.DialogClickListener listener;
 
@@ -96,18 +114,28 @@ public class Dialog_createtask extends DialogFragment{
         start_address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //定位
+                //选择定位
                 text_start=true;
                 Intent intent=new Intent(getActivity().getApplicationContext(),MapActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("Latitude",locationlat);
+                bundle.putString("Longitude",locationlot);
+                bundle.putString("Address",locationaddr);
+                intent.putExtras(bundle);
                 startActivityForResult(intent,0);
             }
         });
         end_address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //定位
+                //选择定位
                 text_start=false;
                 Intent intent=new Intent(getActivity().getApplicationContext(),MapActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("Latitude",locationlat);
+                bundle.putString("Longitude",locationlot);
+                bundle.putString("Address",locationaddr);
+                intent.putExtras(bundle);
                 startActivityForResult(intent,0);
             }
         });
@@ -158,6 +186,8 @@ public class Dialog_createtask extends DialogFragment{
             public void onClick(View view) {
                 start_address.setText("定位中...");
                 //Todo: 自动定位到当前位置
+                SDKInitializer.initialize(getActivity().getApplicationContext());
+                LocationInit();
             }
         });
 
@@ -165,4 +195,69 @@ public class Dialog_createtask extends DialogFragment{
 
         return builder.create();
     }
+
+    //定位模块
+    private void LocationInit(){
+        mLocationClient = new LocationClient(getActivity().getApplicationContext());
+        mLocationClient.registerLocationListener(new MyLocationListener());
+
+        List<String> permissionList = new ArrayList<>();
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.READ_PHONE_STATE);
+        }
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (!permissionList.isEmpty()) {
+            String[] permissions = permissionList.toArray(new String[permissionList.size()]);
+            ActivityCompat.requestPermissions(getActivity(), permissions, 1);
+        } else {
+            LocationClientOption option=new LocationClientOption();
+            option.setCoorType("bd09ll");// 可选，默认gcj02，设置返回的定位结果坐标系
+            option.setScanSpan(1000);//表示每1秒更新一下当前位置
+            option.setIsNeedAddress(true);
+            option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
+            mLocationClient.setLocOption(option);
+
+            mLocationClient.start();
+        }
+
+        //反向获取地址编码
+        mSearch = GeoCoder.newInstance();
+        OnGetGeoCoderResultListener listener = new OnGetGeoCoderResultListener() {
+            public void onGetGeoCodeResult(GeoCodeResult result) {}
+
+            @Override
+            public void onGetReverseGeoCodeResult(ReverseGeoCodeResult result) {
+                if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
+                    //没有找到检索结果'
+                    return;
+                }
+                //获取反向地理编码结果
+                start_address.setText(result.getAddress());
+                locationaddr=result.getAddress();
+                mLocationClient.stop();
+            }
+        };
+        mSearch.setOnGetGeoCodeResultListener(listener);
+    }
+
+    public class MyLocationListener implements BDLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location){
+            if(location.getLocType()==BDLocation.TypeGpsLocation||location.getLocType()==BDLocation.TypeNetWorkLocation)
+            {
+                locationlat=String.valueOf(location.getLatitude());
+                locationlot=String.valueOf(location.getLongitude());
+                //反向解码地址
+                ReverseGeoCodeOption reverseGeoCodeOption = new ReverseGeoCodeOption();
+                reverseGeoCodeOption.location(new LatLng(location.getLatitude(),location.getLongitude()));
+                mSearch.reverseGeoCode(reverseGeoCodeOption);
+            }
+        }
+    }
+
 }

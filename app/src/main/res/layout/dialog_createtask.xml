@@ -111,7 +111,7 @@
                 android:id="@+id/saddress_create"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="7"
+                android:layout_weight="1"
                 android:text="点击选择出发地"
                 android:layout_gravity="center"
                 android:paddingStart="16dp"

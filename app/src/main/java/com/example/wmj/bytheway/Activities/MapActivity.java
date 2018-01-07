@@ -45,7 +45,17 @@ public class MapActivity extends AppCompatActivity {
         mapView = (MapView) findViewById(R.id.bmapView);
         baiduMap=mapView.getMap();
 
-        latLng=new LatLng(30.270258,120.126694);
+        Bundle location_bundle=getIntent().getExtras();
+        //定位后数据传输会主activity
+        Intent intent=new Intent(MapActivity.this,ByTheWayActivity.class);
+        Bundle bundle=new Bundle();
+        bundle.putString("address",location_bundle.getString("Address"));
+        bundle.putString("Latitude",location_bundle.getString("Latitude"));
+        bundle.putString("Longitude",location_bundle.getString("Longitude"));
+        intent.putExtras(bundle);
+        setResult(RESULT_OK,intent);
+        //设定初始位置
+        latLng=new LatLng(Double.parseDouble(location_bundle.getString("Latitude")),Double.parseDouble(location_bundle.getString("Longitude")));
         MapStatusUpdate update= MapStatusUpdateFactory.newLatLng(latLng);
         baiduMap.animateMapStatus(update);
         update=MapStatusUpdateFactory.zoomTo(16f);
@@ -68,7 +78,6 @@ public class MapActivity extends AppCompatActivity {
                     return;
                 }
                 //获取反向地理编码结果
-                //addresstext.setText(result.getAddress());
                 Intent intent=new Intent(MapActivity.this,ByTheWayActivity.class);
                 Bundle bundle=new Bundle();
                 bundle.putString("address",result.getAddress());

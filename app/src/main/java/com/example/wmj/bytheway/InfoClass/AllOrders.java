@@ -31,6 +31,7 @@ public class AllOrders {
 
     public AllOrders(Context context){
         mOrders=new ArrayList<>();
+
         try {
             //Todo: get add orders from database
             String sql = "select * from Task where Status='waiting'";

@@ -113,7 +113,8 @@ public class ByTheWayActivity extends AppCompatActivity {
             @Override
             public void onDialogClick(boolean ifcreate, String titlename, String contents, String s_address, String e_address) {
                 if(ifcreate){
-                    Toast.makeText(ByTheWayActivity.this,titlename+contents+s_address+e_address,Toast.LENGTH_SHORT).show();
+                    //订单创建成功后显示
+                    //Toast.makeText(ByTheWayActivity.this,titlename+contents+s_address+e_address,Toast.LENGTH_SHORT).show();
                 }
             }
         });
