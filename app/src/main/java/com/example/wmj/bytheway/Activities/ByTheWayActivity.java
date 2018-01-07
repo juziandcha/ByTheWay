@@ -90,6 +90,7 @@ public class ByTheWayActivity extends AppCompatActivity {
         new Thread(new MinaThread()).start();
 
     }
+
     //登录界面设置界面
     public void showPasswordDialog() {
         Dialog_login dialogLogin = new Dialog_login();
@@ -144,6 +145,8 @@ public class ByTheWayActivity extends AppCompatActivity {
                             dialog_changedata.show(getFragmentManager(),"Dialog_changedata");
                             break;
                     case R.id.menu_help:
+                            Toast.makeText(ByTheWayActivity.this, "nothing to show!", Toast.LENGTH_SHORT).show();
+                            break;
                     case R.id.menu_logout:
                             //ToDO: 清空四个栏目的信息，并通知adapter发生了修改
                             confirmDialog();

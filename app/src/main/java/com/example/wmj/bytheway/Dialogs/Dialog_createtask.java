@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.example.wmj.bytheway.Activities.MapActivity;
 import com.example.wmj.bytheway.R;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * Created by wmj on 2017/12/31.
  */
@@ -22,6 +24,7 @@ public class Dialog_createtask extends DialogFragment{
     private TextView title,content;
     private TextView start_address,end_address;
     private Button task_create;
+    private boolean text_start=false;
 
     private Dialog_createtask.DialogClickListener listener;
 
@@ -31,6 +34,25 @@ public class Dialog_createtask extends DialogFragment{
 
     public void setOnDialogClick(Dialog_createtask.DialogClickListener listener){
         this.listener=listener;
+    }
+
+    //map数据回传
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
+            case RESULT_OK:
+                Bundle b=data.getExtras();
+                String Addr=b.getString("address");
+                if(text_start){
+                    start_address.setText(Addr);
+                }
+                else {
+                    end_address.setText(Addr);
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -52,18 +74,18 @@ public class Dialog_createtask extends DialogFragment{
             @Override
             public void onClick(View v) {
                 //定位
+                text_start=true;
                 Intent intent=new Intent(getActivity().getApplicationContext(),MapActivity.class);
-                startActivity(intent);
-                Toast.makeText(getActivity(),"star",Toast.LENGTH_SHORT).show();
+                startActivityForResult(intent,0);
             }
         });
         end_address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //定位
+                text_start=false;
                 Intent intent=new Intent(getActivity().getApplicationContext(),MapActivity.class);
-                startActivity(intent);
-                Toast.makeText(getActivity(),"end",Toast.LENGTH_SHORT).show();
+                startActivityForResult(intent,0);
             }
         });
         task_create.setOnClickListener(new View.OnClickListener() {

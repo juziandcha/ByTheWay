@@ -1,5 +1,6 @@
 package com.example.wmj.bytheway.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -67,6 +68,11 @@ public class MapActivity extends AppCompatActivity {
                 }
                 //获取反向地理编码结果
                 //addresstext.setText(result.getAddress());
+                Intent intent=new Intent(MapActivity.this,ByTheWayActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("address",result.getAddress());
+                intent.putExtras(bundle);
+                setResult(RESULT_OK,intent);
             }
         };
         mSearch.setOnGetGeoCodeResultListener(listener);
