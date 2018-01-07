@@ -6,6 +6,7 @@ package com.example.wmj.bytheway.Util;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 public abstract class EndLessOnScrollListener extends  RecyclerView.OnScrollListener{
 
@@ -49,12 +50,14 @@ public abstract class EndLessOnScrollListener extends  RecyclerView.OnScrollList
                 previousTotal = totalItemCount;
             }
         }
+
         //这里需要好好理解
         if (!loading && totalItemCount-visibleItemCount <= firstVisibleItem){
             currentPage ++;
             onLoadMore(currentPage);
             loading = true;
         }
+
     }
 
     /**
@@ -62,7 +65,4 @@ public abstract class EndLessOnScrollListener extends  RecyclerView.OnScrollList
      * 并且实现这个方法
      * */
     public abstract void onLoadMore(int currentPage);
-
-    public abstract void onReachEnd(int currentPage);
-
 }

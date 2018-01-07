@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical">
 
         <!--头部内容-->
         <FrameLayout
@@ -110,10 +111,21 @@
                 android:id="@+id/saddress_create"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="7"
                 android:text="点击选择出发地"
                 android:layout_gravity="center"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+                />
+
+            <TextView
+                android:id="@+id/locate_here"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:textColor="#2196f3"
+                android:text="定位当前位置"
                 />
         </LinearLayout>
 

@@ -53,28 +53,7 @@ public class FragmentOrder extends Fragment {
             //加载更多事件
             @Override
             public void onLoadMore(int currentPage) {
-                mLoadTV.setVisibility(View.VISIBLE);
                 loadMoreData();
-                mLoadTV.setVisibility(View.GONE);
-            }
-
-            //到达底部事件
-            @Override
-            public void onReachEnd(int currentPage){
-                LinearLayoutManager layoutManager =(LinearLayoutManager) mRecyclerView.getLayoutManager();
-                //屏幕中最后一个可见子项的position
-                int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
-                //当前屏幕所看到的子项个数
-                int visibleItemCount = layoutManager.getChildCount();
-                //当前RecyclerView的所有子项个数
-                int totalItemCount = layoutManager.getItemCount();
-                //RecyclerView的滑动状态
-                int state = mRecyclerView.getScrollState();
-                if(visibleItemCount > 0 && lastVisibleItemPosition == totalItemCount - 1 && state == RecyclerView.SCROLL_STATE_IDLE){
-                    mNoMoreTV.setVisibility(View.VISIBLE);
-                }else {
-                    mNoMoreTV.setVisibility(View.GONE);
-                }
             }
         });
 
@@ -183,12 +162,24 @@ public class FragmentOrder extends Fragment {
 
     //每次上拉加载的时候，给RecyclerView的后面添加了10条数据数据
     private void loadMoreData(){
+        mLoadTV.setVisibility(View.VISIBLE);
+        int preSize=mAdapter.getItemCount();
+
+        //ToDo: 加载更多数据
         for (int i =0; i < 10; i++){
             Order order=new Order();
             order.setTitle("上拉加载 #"+i);
             mAdapter.addData(order);
             mAdapter.notifyDataSetChanged();
         }
+
+        mLoadTV.setVisibility(View.GONE);
+
+        int nowSize=mAdapter.getItemCount();
+        if(nowSize<=preSize)
+            mNoMoreTV.setVisibility(View.VISIBLE);
+        else
+            mNoMoreTV.setVisibility(View.GONE);
     }
 
     //下拉刷新
@@ -207,7 +198,7 @@ public class FragmentOrder extends Fragment {
             public void run() {
                 mSwipeRefreshLayout.setRefreshing(false);
 
-                //Todo: 重新从服务器获取数据，获取语句卸载Allorders类里
+                //Todo: 重新从服务器获取数据，获取语句写在Allorders类里
                 AllOrders allOrders = AllOrders.get(getActivity());
                 List<Order> orders= allOrders.getOrders();
 

@@ -26,4 +26,16 @@ public class Address {
     public String getLatitude() {
         return latitude;
     }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 }
