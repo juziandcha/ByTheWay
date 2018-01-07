@@ -24,6 +24,7 @@ import com.example.wmj.bytheway.R;
 import com.pkmmte.view.CircularImageView;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by st4rlight on 2017/12/27.
@@ -86,7 +87,7 @@ public class FragmentOrder extends Fragment {
 
         @Override
         public void onClick(View view) {
-            showtaskDialog(mOrder);
+            showtaskDialog(mOrder.getUUID());
         }
         public void bindOrder(Order order){
             mOrder=order;
@@ -209,16 +210,12 @@ public class FragmentOrder extends Fragment {
     }
 
     //查看任务界面
-    private void showtaskDialog(Order order){
-        //Note 可以传递UUID进来，可以直接传order对象进来，选择一个
+    private void showtaskDialog(UUID uuid){
+        //Note: 可以传递UUID进来，可以直接传order对象进来，选择一个
         Dialog_waitingtask dialog_waitingtask=new Dialog_waitingtask();
 
         Bundle bundle=new Bundle();
-        bundle.putString("release_user","user1");
-        bundle.putString("title","task1");
-        bundle.putString("content","dsafadfaadfafafadfadfad adacdacaavdcafadfcadfaa");
-        bundle.putString("start_address","杭州东");
-        bundle.putString("end_address","浙大玉泉校区");
+        bundle.putSerializable("uuid",uuid);
         dialog_waitingtask.setArguments(bundle);
 
         dialog_waitingtask.setOnDialogClick(new Dialog_waitingtask.DialogClickListener() {

@@ -13,7 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wmj.bytheway.Activities.OnlyMapActivity;
+import com.example.wmj.bytheway.InfoClass.AllOrders;
+import com.example.wmj.bytheway.InfoClass.Order;
 import com.example.wmj.bytheway.R;
+
+import java.util.UUID;
 
 /**
  * Created by wmj on 2017/12/31.
@@ -41,6 +45,9 @@ public class Dialog_waitingtask extends DialogFragment{
 
         super.onCreate(savedInstanceState);
         Bundle bundle=getArguments();
+
+        UUID uuid=(UUID)bundle.getSerializable("uuid");
+        Order oder= AllOrders.get(getActivity()).getOrder(uuid);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = LayoutInflater.from(getActivity());
