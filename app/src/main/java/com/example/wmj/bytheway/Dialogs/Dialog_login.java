@@ -111,6 +111,7 @@ public class Dialog_login extends DialogFragment{
                             Toast.makeText(getActivity(), "账户名或密码错误", Toast.LENGTH_SHORT).show();
                         }
                     }catch (Exception ex){
+                        ex.printStackTrace();
                         Toast.makeText(getActivity(), "网络连接失败，请检擦网络连接", Toast.LENGTH_SHORT).show();
                     }
                 }

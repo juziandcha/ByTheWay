@@ -28,7 +28,7 @@
         android:theme="@style/AppTheme.WithoutActionBar">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="bDauvFDB82dMulZ31KKNB2KHYxxdWi8M" />
+            android:value="zWYuG6oNGC2P3OjQQLZkL6MssMWGwmsq" />
 
         <activity
             android:name=".Activities.ByTheWayActivity"
