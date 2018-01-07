@@ -11,7 +11,7 @@ import java.util.UUID;
 public class Order {
     private UUID mUUID;//uuid
 
-    private int mOrderID;//订单id
+    private String mOrderID;//订单id
     private String mTitle;//订单标题
     private String mContent;//订单内容
 
@@ -35,7 +35,7 @@ public class Order {
         return mUUID;
     }
 
-    public int getOrderID() {
+    public String getOrderID() {
         return mOrderID;
     }
 
@@ -83,7 +83,7 @@ public class Order {
         mUUID = UUID;
     }
 
-    public void setOrderID(int orderID) {
+    public void setOrderID(String orderID) {
         mOrderID = orderID;
     }
 
