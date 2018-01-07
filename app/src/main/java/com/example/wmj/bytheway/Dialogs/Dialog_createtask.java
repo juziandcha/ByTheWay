@@ -176,6 +176,8 @@ public class Dialog_createtask extends DialogFragment{
                         }
                     }catch (JSONException ex){
                         ex.printStackTrace();
+                    }catch(Exception ex){
+                        Toast.makeText(getActivity(), "网络连接失败，请检查网络连接", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

@@ -10,14 +10,19 @@ import org.json.JSONObject;
  */
 
 public class GetData {
-    public static void runGetData(String sql, String type, JSONObject keyValue){
-        try {
-            JsonContent JsonCont = new JsonContent(sql, type, keyValue);
-            ByTheWayActivity.session.write(JsonCont.getJsonStr());
-            ByTheWayActivity.lock.lock();
-            ByTheWayActivity.condition.await();
-        }catch (Exception ex){
-            ex.printStackTrace();
+    public static void runGetData(String sql, String type, JSONObject keyValue) throws Exception {
+        if (ByTheWayActivity.session.isConnected()) {
+            try {
+                JsonContent JsonCont = new JsonContent(sql, type, keyValue);
+                ByTheWayActivity.session.write(JsonCont.getJsonStr());
+                ByTheWayActivity.lock.lock();
+                ByTheWayActivity.condition.await();
+                ByTheWayActivity.lock.unlock();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            throw new Exception();
         }
     }
 }

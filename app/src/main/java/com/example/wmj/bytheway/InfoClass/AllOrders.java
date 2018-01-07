@@ -68,8 +68,13 @@ public class AllOrders {
 
                 mOrders.add(tempOrder);
             }
+
+            sAllOrders=this;
         }catch (JSONException ex){
             ex.printStackTrace();
+        }catch(Exception ex){
+            //Todo: may cause error here;
+            Toast.makeText(ByTheWayActivity.getByTheWayActivity().getApplication(), "网络连接失败，请检查网络连接", Toast.LENGTH_SHORT).show();
         }
     }
 
