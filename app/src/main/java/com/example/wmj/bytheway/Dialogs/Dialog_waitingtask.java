@@ -12,10 +12,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wmj.bytheway.Activities.ByTheWayActivity;
 import com.example.wmj.bytheway.Activities.OnlyMapActivity;
 import com.example.wmj.bytheway.InfoClass.AllOrders;
 import com.example.wmj.bytheway.InfoClass.Order;
 import com.example.wmj.bytheway.R;
+import com.example.wmj.bytheway.Util.GetData;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.UUID;
 
@@ -51,7 +57,7 @@ public class Dialog_waitingtask extends DialogFragment{
         Bundle bundle=getArguments();
 
         UUID uuid=(UUID)bundle.getSerializable("uuid");
-        Order order= AllOrders.get(getActivity()).getOrder(uuid);
+        final Order order= AllOrders.get(getActivity()).getOrder(uuid);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = LayoutInflater.from(getActivity());
@@ -116,6 +122,7 @@ public class Dialog_waitingtask extends DialogFragment{
                 startActivity(intent);
             }
         });
+
         end_address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,11 +135,34 @@ public class Dialog_waitingtask extends DialogFragment{
                 startActivity(intent);
             }
         });
+
         receive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onDialogClick(true);
-                dismiss();
+                //接收订单
+                try {
+                    String sql = "update Task set Status='doing' where TaskID=?";
+                    JSONObject keyValue = new JSONObject();
+                    keyValue.put("1", order.getOrderID());//顺序放置要填充?部分的值，防止sql注入
+                    GetData.runGetData(sql,"update",keyValue);
+                    JSONArray tempJsArr=new JSONArray(ByTheWayActivity.dataResult);
+
+                    sql = "insert into TaskUser(TaskID,ReleaseUser,ReceiveUser,ReceiveTime) values ('?','?','?',null) ";
+                    keyValue = new JSONObject();
+                    keyValue.put("1", order.getOrderID());//顺序放置要填充?部分的值，防止sql注入
+                    keyValue.put("2",order.getReleaseUser().getID());
+                    keyValue.put("3",ByTheWayActivity.userData.getID());
+
+                    GetData.runGetData(sql,"update",keyValue);
+                    tempJsArr=new JSONArray(ByTheWayActivity.dataResult);
+
+                    listener.onDialogClick(true);
+                    dismiss();
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                    Toast.makeText(getActivity(), "接受订单失败！", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
