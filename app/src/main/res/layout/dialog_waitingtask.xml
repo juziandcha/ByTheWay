@@ -122,6 +122,7 @@
                         android:alpha="0.5"
                         />
                     <TextView
+                        android:id="@+id/release_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="这是一个时间"

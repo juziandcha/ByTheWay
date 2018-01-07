@@ -67,6 +67,7 @@ public class AllOrders {
                 tempOrder.setStatus(jsonObject.getString("Status"));
 
                 mOrders.add(tempOrder);
+                sAllOrders=this;
             }
         }catch (JSONException ex){
             ex.printStackTrace();

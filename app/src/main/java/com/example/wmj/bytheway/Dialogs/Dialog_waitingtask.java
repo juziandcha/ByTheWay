@@ -28,7 +28,11 @@ public class Dialog_waitingtask extends DialogFragment{
     private TextView release_user;
     private TextView title,content;
     private TextView start_address,end_address;
+    private TextView release_time;
     private Button receive;
+
+    private String s_lat,s_lot;
+    private String e_lat,e_lot;
 
     private Dialog_waitingtask.DialogClickListener listener;
 
@@ -47,7 +51,7 @@ public class Dialog_waitingtask extends DialogFragment{
         Bundle bundle=getArguments();
 
         UUID uuid=(UUID)bundle.getSerializable("uuid");
-        Order oder= AllOrders.get(getActivity()).getOrder(uuid);
+        Order order= AllOrders.get(getActivity()).getOrder(uuid);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = LayoutInflater.from(getActivity());
@@ -59,12 +63,35 @@ public class Dialog_waitingtask extends DialogFragment{
         start_address=(TextView) view.findViewById(R.id.start_address);
         end_address=(TextView)view.findViewById(R.id.end_address);
         receive=(Button)view.findViewById(R.id.receive);
+        release_time=(TextView)view.findViewById(R.id.release_time);
 
-        release_user.setText(bundle.getString("release_user"));
-        title.setText(bundle.getString("title"));
-        content.setText(bundle.getString("content"));
-        start_address.setText(bundle.getString("start_address"));
-        end_address.setText(bundle.getString("end_address"));
+
+        if(order.getReleaseUser().getName().equals(""))
+            release_user.setText(order.getReleaseUser().getID());
+        else
+            release_user.setText(order.getReleaseUser().getName());
+        title.setText(order.getTitle());
+        release_time.setText(order.getReleaseTime());
+        content.setText(order.getContent());
+        if(order.getStartAddress()!=null){
+            start_address.setText(order.getStartAddress().getAddress());
+            s_lat=order.getStartAddress().getLatitude();
+            s_lot=order.getStartAddress().getLongitude();
+        }else {
+            start_address.setText("暂无地址信息");
+            s_lot="0";
+            s_lat="0";
+        }
+        if(order.getTargetAddress()!=null){
+            end_address.setText(order.getTargetAddress().getAddress());
+            e_lat=order.getTargetAddress().getLatitude();
+            e_lot=order.getTargetAddress().getLongitude();
+        }else {
+            end_address.setText("暂无地址信息");
+            e_lot="0";
+            e_lat="0";
+        }
+
         //设为其它状态不可选中
         //setCancelable(false);
 
@@ -73,7 +100,9 @@ public class Dialog_waitingtask extends DialogFragment{
             public void onClick(View v) {
                 //经纬度传输
                 Intent intent=new Intent(getActivity().getApplicationContext(),OnlyMapActivity.class);
-                startActivity(intent);
+//                Bundle location_bundle=new Bundle();
+//                Bundle.
+//                startActivity(intent);
                 Toast.makeText(getActivity(),"star",Toast.LENGTH_SHORT).show();
             }
         });
