@@ -203,8 +203,8 @@ public class FragmentOrder extends Fragment {
 
                 //Todo: 重新从服务器获取数据，获取语句写在Allorders类里
                 updateUI();
-
-                Toast.makeText(getActivity(), "刷新成功", Toast.LENGTH_SHORT).show();
+                if(ByTheWayActivity.session.isConnected())
+                    Toast.makeText(getActivity(), "刷新成功", Toast.LENGTH_SHORT).show();
             }
         }, 2000);
     }
@@ -216,6 +216,7 @@ public class FragmentOrder extends Fragment {
 
         Bundle bundle=new Bundle();
         bundle.putSerializable("uuid",uuid);
+
         dialog_waitingtask.setArguments(bundle);
 
         dialog_waitingtask.setOnDialogClick(new Dialog_waitingtask.DialogClickListener() {
