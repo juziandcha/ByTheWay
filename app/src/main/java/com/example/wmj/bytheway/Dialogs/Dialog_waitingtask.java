@@ -139,28 +139,49 @@ public class Dialog_waitingtask extends DialogFragment{
         receive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //接收订单
-                try {
-                    String sql = "update Task set Status='doing' where TaskID=?";
-                    JSONObject keyValue = new JSONObject();
-                    keyValue.put("1", order.getOrderID());//顺序放置要填充?部分的值，防止sql注入
-                    GetData.runGetData(sql,"update",keyValue);
-                    JSONArray tempJsArr=new JSONArray(ByTheWayActivity.dataResult);
+                if(ByTheWayActivity.userData.getID().equals(order.getReleaseUser().getID())){
+                    Toast.makeText(getActivity(), "不能接收自己发布的订单", Toast.LENGTH_SHORT).show();
+                }else {
+                    //接收订单
+                    try {
+                        String sql = "update Task set Status='doing' where TaskID=?;";
+                        JSONObject keyValue = new JSONObject();
+                        keyValue.put("1", order.getOrderID());//顺序放置要填充?部分的值，防止sql注入
+                        GetData.runGetData(sql, "update", keyValue);
+                        JSONObject jsObjStatus = new JSONObject(ByTheWayActivity.dataResult);
+                        String status = jsObjStatus.getString("succeed");
 
-                    sql = "insert into TaskUser(TaskID,ReleaseUser,ReceiveUser,ReceiveTime) values ('?','?','?',null) ";
-                    keyValue = new JSONObject();
-                    keyValue.put("1", order.getOrderID());//顺序放置要填充?部分的值，防止sql注入
-                    keyValue.put("2",order.getReleaseUser().getID());
-                    keyValue.put("3",ByTheWayActivity.userData.getID());
+                        sql = "insert into TaskUser values (?,?,?,null);";
+                        keyValue = new JSONObject();
+                        keyValue.put("1", order.getOrderID());//顺序放置要填充?部分的值，防止sql注入
+                        keyValue.put("2", order.getReleaseUser().getID());
+                        keyValue.put("3", ByTheWayActivity.userData.getID());
 
-                    GetData.runGetData(sql,"update",keyValue);
-                    tempJsArr=new JSONArray(ByTheWayActivity.dataResult);
+                        GetData.runGetData(sql, "update", keyValue);
+                        JSONObject jsObjTaskUser = new JSONObject(ByTheWayActivity.dataResult);
+                        String taskUser = jsObjTaskUser.getString("succeed");
+                        if (!status.equals("true") || !taskUser.equals("true")) {
+                            if (status.equals("false")) {
+                                sql = "update Task set Status='waiting' where TaskID=?;";
+                                keyValue = new JSONObject();
+                                keyValue.put("1", order.getOrderID());//顺序放置要填充?部分的值，防止sql注入
+                                GetData.runGetData(sql, "update", keyValue);
+                            }
+                            if (taskUser.equals("false")) {
+                                sql = "delete from TaskUser where TaskID=?";
+                                keyValue = new JSONObject();
+                                keyValue.put("1", order.getOrderID());
+                                GetData.runGetData(sql, "update", keyValue);
+                            }
+                        } else {
+                            Toast.makeText(getActivity(), "接收订单成功", Toast.LENGTH_SHORT).show();
+                        }
 
-                    listener.onDialogClick(true);
-                    dismiss();
-                }catch (Exception ex){
-                    ex.printStackTrace();
-                    Toast.makeText(getActivity(), "接受订单失败！", Toast.LENGTH_SHORT).show();
+                        listener.onDialogClick(true);
+                        dismiss();
+                    } catch (Exception ex) {
+                        Toast.makeText(getActivity(), "接受订单失败,请检查网络连接！", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
