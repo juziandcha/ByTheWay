@@ -34,8 +34,8 @@ public class FragmentOrder extends Fragment {
     private RecyclerView mRecyclerView;
     private OrderAdapter mAdapter;
     private TextView mNoDataTV;
-    private TextView mNoMoreTV;
-    private TextView mLoadTV;
+//    private TextView mNoMoreTV;
+//    private TextView mLoadTV;
     private SwipeRefreshLayout mSwipeRefreshLayout;//下拉刷新
 
     @Nullable
@@ -45,8 +45,8 @@ public class FragmentOrder extends Fragment {
         initRefresh(view);
 
         mNoDataTV=view.findViewById(R.id.empty_view);
-        mNoMoreTV=view.findViewById(R.id.no_more);
-        mLoadTV=view.findViewById(R.id.load_more);
+//        mNoMoreTV=view.findViewById(R.id.no_more);
+//        mLoadTV=view.findViewById(R.id.load_more);
 
         mRecyclerView=view.findViewById(R.id.recycler_order);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -165,7 +165,7 @@ public class FragmentOrder extends Fragment {
 
     //每次上拉加载的时候，给RecyclerView的后面添加了10条数据数据
     private void loadMoreData(){
-        mLoadTV.setVisibility(View.VISIBLE);
+//        mLoadTV.setVisibility(View.VISIBLE);
         int preSize=mAdapter.getItemCount();
 
         //ToDo: 加载更多数据
@@ -176,13 +176,13 @@ public class FragmentOrder extends Fragment {
 //            mAdapter.notifyDataSetChanged();
 //        }
 
-        mLoadTV.setVisibility(View.GONE);
+//        mLoadTV.setVisibility(View.GONE);
 
-        int nowSize=mAdapter.getItemCount();
-        if(nowSize<=preSize)
-            mNoMoreTV.setVisibility(View.VISIBLE);
-        else
-            mNoMoreTV.setVisibility(View.GONE);
+//        int nowSize=mAdapter.getItemCount();
+//        if(nowSize<=preSize)
+//            mNoMoreTV.setVisibility(View.VISIBLE);
+//        else
+//            mNoMoreTV.setVisibility(View.GONE);
     }
 
     //下拉刷新

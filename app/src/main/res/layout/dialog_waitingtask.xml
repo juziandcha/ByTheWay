@@ -49,8 +49,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_weight="3"
-                android:paddingLeft="16dp"
+                android:layout_weight="4"
+                android:paddingLeft="12dp"
                 >
                 <ImageView
                     android:id="@+id/image"
@@ -140,7 +140,7 @@
             android:background="#BCBCBC"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:alpha="0.1"
+            android:alpha="0.2"
             />
 
         <LinearLayout
@@ -163,23 +163,31 @@
             android:background="#BCBCBC"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:alpha="0.1"
+            android:alpha="0.2"
             />
 
         <!--地址部分-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="2dp"
+            android:orientation="vertical"
             >
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_weight="1"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
                 android:gravity="center"
                 >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="起始地"
+                    />
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -193,23 +201,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="这是一个地址"
+                    android:paddingLeft="16dp"
                     android:layout_gravity="center"
                     />
             </LinearLayout>
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_keyboard_arrow_right_black_48dp"
-                android:scaleType="centerCrop"
-                android:alpha="0.5"
-                />
+            <!--<ImageView-->
+                <!--android:layout_width="32dp"-->
+                <!--android:layout_height="32dp"-->
+                <!--android:src="@drawable/ic_keyboard_arrow_right_black_48dp"-->
+                <!--android:scaleType="centerCrop"-->
+                <!--android:alpha="0.5"-->
+                <!--/>-->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_weight="1"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
                 android:gravity="center"
                 >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="目的地"
+                    />
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -223,6 +240,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="这是一个地址"
+                    android:paddingLeft="16dp"
                     android:layout_gravity="center"
                     />
             </LinearLayout>
@@ -234,7 +252,7 @@
             android:background="#BCBCBC"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:alpha="0.1"
+            android:alpha="0.2"
             />
 
         <FrameLayout

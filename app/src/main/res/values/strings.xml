@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">ByTheWay</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="txt_toolbar">Toolbar</string>
@@ -20,5 +19,6 @@
     <string name="feedback_info">通过Github Issue向我们反馈</string>
     <string name="authors">开发者</string>
     <string name="change_data">修改资料</string>
-    <string name="no_data_available">附件没有合适的订单</string>
+    <string name="no_data_available">附件没有合适的订单\n下拉可以刷新</string>
+    <string name="function_not_open">此功能正在施工中</string>
 </resources>

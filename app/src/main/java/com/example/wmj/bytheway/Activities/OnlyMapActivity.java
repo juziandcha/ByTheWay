@@ -34,7 +34,6 @@ public class OnlyMapActivity extends AppCompatActivity {
         //设定初始位置
         String lat=location_bundle.getString("Longitude");
         String lot=location_bundle.getString("Latitude");
-        Toast.makeText(OnlyMapActivity.this, lat+"\n"+lot, Toast.LENGTH_SHORT).show();
         LatLng latLng=new LatLng(Double.parseDouble(lat),Double.parseDouble(lot));
         MapStatusUpdate update= MapStatusUpdateFactory.newLatLng(latLng);
         baiduMap.animateMapStatus(update);

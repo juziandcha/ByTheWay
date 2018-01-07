@@ -92,6 +92,15 @@ public class Dialog_waitingtask extends DialogFragment{
             e_lat="0";
         }
 
+        //设置头像
+        String gender=order.getReleaseUser().getGender();
+        if(gender.equals("male"))
+            image.setImageResource(R.drawable.boy);
+        else if(gender.equals("female"))
+            image.setImageResource(R.drawable.girl);
+        else
+            image.setImageResource(R.mipmap.app_logo);
+
         //设为其它状态不可选中
         //setCancelable(false);
 
