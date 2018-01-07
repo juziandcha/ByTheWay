@@ -3,6 +3,7 @@ package com.example.wmj.bytheway.ConnSup;
 import com.example.wmj.bytheway.Activities.ByTheWayActivity;
 
 import java.net.InetSocketAddress;
+import java.nio.charset.Charset;
 import java.util.concurrent.Executors;
 
 import org.apache.mina.core.future.ConnectFuture;
@@ -26,13 +27,18 @@ public class MinaThread implements Runnable {
     public void run(){
         System.out.println("Client Start Connection");
         connector=new NioSocketConnector();
+        connector.getSessionConfig().setReadBufferSize(10240);
 
         //设置连接超时时间
         connector.setConnectTimeoutMillis(10000);
 
+        TextLineCodecFactory lineCodec=new TextLineCodecFactory(Charset.forName("UTF-8"));
+        lineCodec.setDecoderMaxLineLength(1024*1024); //1M
+        lineCodec.setEncoderMaxLineLength(1024*1024); //1M
+
         //set filter,threadPool过滤器用于将处理I/O的线程和处理业务逻辑的线程分开
         connector.getFilterChain().addLast("threadPool", new ExecutorFilter(Executors.newCachedThreadPool()));
-        connector.getFilterChain().addLast("codec", new ProtocolCodecFilter(new TextLineCodecFactory()));
+        connector.getFilterChain().addLast("codec", new ProtocolCodecFilter(lineCodec));
 
         connector.setHandler(new MinaClientHandler());
 

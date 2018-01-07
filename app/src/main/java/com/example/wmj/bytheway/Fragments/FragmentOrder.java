@@ -144,7 +144,8 @@ public class FragmentOrder extends Fragment {
 
     //创建Adapter，并设置给RecyclerView
     private void updateUI(){
-        AllOrders allOrders = AllOrders.get(getActivity());
+        //AllOrders allOrders =AllOrders.get(getActivity());
+        AllOrders allOrders=new AllOrders(getContext());
         List<Order> orders= allOrders.getOrders();
 
         //如果没有数据的时候,那么只显示没有数据
@@ -158,6 +159,7 @@ public class FragmentOrder extends Fragment {
 
         mAdapter = new OrderAdapter(orders);
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 
     //每次上拉加载的时候，给RecyclerView的后面添加了10条数据数据
@@ -199,12 +201,8 @@ public class FragmentOrder extends Fragment {
                 mSwipeRefreshLayout.setRefreshing(false);
 
                 //Todo: 重新从服务器获取数据，获取语句写在Allorders类里
-                AllOrders allOrders =new AllOrders(getActivity());
-                List<Order> orders= allOrders.getOrders();
+                updateUI();
 
-                mAdapter = new OrderAdapter(orders);
-                mRecyclerView.setAdapter(mAdapter);
-                mAdapter.notifyDataSetChanged();
                 Toast.makeText(getActivity(), "刷新成功", Toast.LENGTH_SHORT).show();
             }
         }, 2000);
