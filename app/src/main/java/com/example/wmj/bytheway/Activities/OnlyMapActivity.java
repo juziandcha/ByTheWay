@@ -2,6 +2,7 @@ package com.example.wmj.bytheway.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
@@ -29,9 +30,12 @@ public class OnlyMapActivity extends AppCompatActivity {
         mapView = (MapView) findViewById(R.id.only_bmapView);
         baiduMap=mapView.getMap();
 
-        //Bundle location_bundle=getIntent().getExtras();
+        Bundle location_bundle=getIntent().getExtras();
         //设定初始位置
-        LatLng latLng=new LatLng(30.274007,120.129971);
+        String lat=location_bundle.getString("Longitude");
+        String lot=location_bundle.getString("Latitude");
+        Toast.makeText(OnlyMapActivity.this, lat+"\n"+lot, Toast.LENGTH_SHORT).show();
+        LatLng latLng=new LatLng(Double.parseDouble(lat),Double.parseDouble(lot));
         MapStatusUpdate update= MapStatusUpdateFactory.newLatLng(latLng);
         baiduMap.animateMapStatus(update);
         update=MapStatusUpdateFactory.zoomTo(16f);

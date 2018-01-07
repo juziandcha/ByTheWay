@@ -100,10 +100,11 @@ public class Dialog_waitingtask extends DialogFragment{
             public void onClick(View v) {
                 //经纬度传输
                 Intent intent=new Intent(getActivity().getApplicationContext(),OnlyMapActivity.class);
-//                Bundle location_bundle=new Bundle();
-//                Bundle.
-//                startActivity(intent);
-                Toast.makeText(getActivity(),"star",Toast.LENGTH_SHORT).show();
+                Bundle location_bundle=new Bundle();
+                location_bundle.putString("Latitude",s_lat);
+                location_bundle.putString("Longitude",s_lot);
+                intent.putExtras(location_bundle);
+                startActivity(intent);
             }
         });
         end_address.setOnClickListener(new View.OnClickListener() {
@@ -111,8 +112,11 @@ public class Dialog_waitingtask extends DialogFragment{
             public void onClick(View v) {
                 //经纬度传输
                 Intent intent=new Intent(getActivity().getApplicationContext(),OnlyMapActivity.class);
+                Bundle location_bundle=new Bundle();
+                location_bundle.putString("Latitude",e_lat);
+                location_bundle.putString("Longitude",e_lot);
+                intent.putExtras(location_bundle);
                 startActivity(intent);
-                Toast.makeText(getActivity(),"end",Toast.LENGTH_SHORT).show();
             }
         });
         receive.setOnClickListener(new View.OnClickListener() {
