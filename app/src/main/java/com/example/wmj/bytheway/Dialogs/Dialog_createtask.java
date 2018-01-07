@@ -66,6 +66,7 @@ public class Dialog_createtask extends DialogFragment{
                 if(text_start){
                     start_address.setText(Addr);
                     start=new Address(Addr,lat,lng);
+                    
                 }
                 else {
                     end_address.setText(Addr);
